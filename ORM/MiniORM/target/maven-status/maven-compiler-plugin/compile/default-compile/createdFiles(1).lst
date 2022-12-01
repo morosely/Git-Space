@@ -1,0 +1,8 @@
+cn\itcast\orm\annotation\ORMTable.class
+cn\itcast\orm\annotation\ORMId.class
+cn\itcast\orm\annotation\ORMColumn.class
+cn\itcast\orm\core\Mapper.class
+cn\itcast\orm\utils\Dom4jUtil.class
+cn\itcast\orm\core\ORMSession.class
+cn\itcast\orm\core\ORMConfig.class
+cn\itcast\orm\utils\AnnotationUtil.class

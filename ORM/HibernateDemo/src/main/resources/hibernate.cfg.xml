@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!--数据库连接-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123</property>
+
+        <!--选项配置-->
+        <property name="hbm2ddl.auto">update</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+
+        <!--映射配置文件的路径-->
+        <!--<mapping resource="cn/itcast/orm/entity/Book.hbm.xml"/>-->
+
+        <!--配置包含有注解的实体类-->
+        <mapping class="cn.itcast.orm.entity.Book"/>
+    </session-factory>
+
+</hibernate-configuration>
