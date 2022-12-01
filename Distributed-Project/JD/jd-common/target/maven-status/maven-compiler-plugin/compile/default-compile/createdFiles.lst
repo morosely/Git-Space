@@ -1,0 +1,12 @@
+com\jd\common\utils\JsonUtils.class
+com\jd\common\utils\FastDFSClient.class
+com\jd\common\utils\IDUtils.class
+com\jd\common\redis\JedisClient.class
+com\jd\common\pojo\EasyUITreeNode.class
+com\jd\common\redis\JedisClientCluster.class
+com\jd\common\pojo\SearchResult.class
+com\jd\common\pojo\SearchItem.class
+com\jd\common\redis\JedisClientPool.class
+com\jd\common\pojo\JDReturnResult.class
+com\jd\common\pojo\EasyUIDataGridResult.class
+com\jd\common\utils\CookieUtils.class

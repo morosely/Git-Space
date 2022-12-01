@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="mssqlGenerator" targetRuntime="MyBatis3">
+		<plugin type="com.shiji.test.MyBatisPlugin" >
+            <property name="hasLombok" value="true"/>
+        </plugin>
+        <!--关闭注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.17.13.81:3306/omdmain?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"  userId="root" password="123456" >
+        	<property name="useInformationSchema" value="true"></property>
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.shiji.downloaddata.model" targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources" />
+        <javaClientGenerator targetPackage="com.shiji.downloaddata.mapper" targetProject="src/main/java" type="XMLMAPPER" />
+
+        <table tableName='access_log' domainObjectName='AccessLogModel'
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true" />
+            <columnOverride column="requestData" jdbcType="VARCHAR"/> <!--解决长文本生成带WithBLOBs问题-->
+            <columnOverride column="responseData" jdbcType="VARCHAR"/>
+        </table>
+    </context>
+</generatorConfiguration>

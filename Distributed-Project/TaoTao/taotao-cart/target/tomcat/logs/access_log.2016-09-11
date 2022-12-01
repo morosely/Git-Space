@@ -1,0 +1,5 @@
+127.0.0.1 - - [11/Sep/2016:11:14:03 +0800] "GET /cart/1106495.html HTTP/1.0" 302 - http-bio-8086-exec-1 543
+127.0.0.1 - - [11/Sep/2016:11:14:04 +0800] "GET /cart/list.html HTTP/1.0" 200 18618 http-bio-8086-exec-2 1001
+127.0.0.1 - - [11/Sep/2016:11:14:04 +0800] "GET /favicon.ico HTTP/1.0" 404 973 http-bio-8086-exec-3 2
+127.0.0.1 - - [11/Sep/2016:11:16:18 +0800] "GET /cart/list.html HTTP/1.0" 200 20855 http-bio-8086-exec-4 268
+127.0.0.1 - - [11/Sep/2016:11:16:23 +0800] "GET /service/api/cart/8 HTTP/1.0" 200 498 http-bio-8086-exec-5 20

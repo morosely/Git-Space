@@ -1,0 +1,10 @@
+io\transaction\msg\stock\message\StockTxMessageConsumer.class
+io\transaction\msg\stock\entity\Stock.class
+io\transaction\msg\stock\service\impl\StockServiceImpl.class
+io\transaction\msg\stock\config\MybatisPlusConfig.class
+io\transaction\msg\stock\StockServerStarter.class
+io\transaction\msg\stock\service\StockService.class
+io\transaction\msg\stock\config\CorsConfig.class
+io\transaction\msg\stock\config\WebMvcConfig.class
+io\transaction\msg\stock\tx\TxMessage.class
+io\transaction\msg\stock\mapper\StockMapper.class

@@ -1,0 +1,15 @@
+io\transaction\xa\config\MyBatisConfig1.class
+io\transaction\xa\mapper2\UserAccount2Mapper.class
+io\transaction\xa\config\WebMvcConfig.class
+io\transaction\xa\entity\UserAccount.class
+io\transaction\xa\config\MyBatisConfig2.class
+io\transaction\xa\config\CorsConfig.class
+io\transaction\xa\TxXaStarter.class
+META-INF\spring-configuration-metadata.json
+io\transaction\xa\mapper1\UserAccount1Mapper.class
+io\transaction\xa\controller\TransferController.class
+io\transaction\xa\config\DBConfig1.class
+io\transaction\xa\service\UserAccountService.class
+io\transaction\xa\service\impl\UserAccountServiceImpl.class
+io\transaction\xa\config\MybatisPlusConfig.class
+io\transaction\xa\config\DBConfig2.class
