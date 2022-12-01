@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/jcl/pom.xml" />
+        <option value="$PROJECT_DIR$/logback/pom.xml" />
+        <option value="$PROJECT_DIR$/log4j2/pom.xml" />
+        <option value="$PROJECT_DIR$/jul/pom.xml" />
+        <option value="$PROJECT_DIR$/slf4j/pom.xml" />
+        <option value="$PROJECT_DIR$/Lock_Demo-master/pom.xml" />
+        <option value="$PROJECT_DIR$/lock-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/../KeyGenerator/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

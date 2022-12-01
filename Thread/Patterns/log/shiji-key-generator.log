@@ -1,0 +1,65 @@
+2022-01-17 15:55:08,560 INFO [main] c.a.b.n.c.u.NacosConfigPropertiesUtils [NacosConfigPropertiesUtils.java : 47] nacosConfigProperties : NacosConfigProperties{serverAddr='127.0.0.1:8848', contextPath='null', encode='null', endpoint='null', namespace='null', accessKey='null', secretKey='null', ramRoleName='null', autoRefresh=false, dataId='null', dataIds='null', group='DEFAULT_GROUP', type=null, maxRetry='null', configLongPollTimeout='null', configRetryTime='null', enableRemoteSyncConfig=false, extConfig=[], bootstrap=Bootstrap{enable=false, logEnable=false}}
+2022-01-17 15:55:08,563 INFO [main] c.a.b.n.c.a.NacosConfigApplicationContextInitializer [NacosConfigApplicationContextInitializer.java : 75] [Nacos Config Boot] : The preload configuration is not enabled
+2022-01-17 15:55:09,575 INFO [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 249] Fetching config from server at : http://localhost:8888
+2022-01-17 15:55:10,672 INFO [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 273] Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
+2022-01-17 15:55:10,673 WARN [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 153] Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/shiji-key-generator/aliweb": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2022-01-17 15:55:10,676 INFO [main] c.a.b.n.c.u.NacosConfigPropertiesUtils [NacosConfigPropertiesUtils.java : 47] nacosConfigProperties : NacosConfigProperties{serverAddr='127.0.0.1:8848', contextPath='null', encode='null', endpoint='null', namespace='null', accessKey='null', secretKey='null', ramRoleName='null', autoRefresh=false, dataId='null', dataIds='null', group='DEFAULT_GROUP', type=null, maxRetry='null', configLongPollTimeout='null', configRetryTime='null', enableRemoteSyncConfig=false, extConfig=[], bootstrap=Bootstrap{enable=false, logEnable=false}}
+2022-01-17 15:55:10,676 INFO [main] c.a.b.n.c.a.NacosConfigApplicationContextInitializer [NacosConfigApplicationContextInitializer.java : 75] [Nacos Config Boot] : The preload configuration is not enabled
+2022-01-17 15:55:10,676 INFO [main] c.shiji.keygenerator.BootApplication [SpringApplication.java : 655] The following profiles are active: aliweb
+2022-01-17 15:55:11,365 INFO [main] o.s.cloud.context.scope.GenericScope [GenericScope.java : 295] BeanFactory id=c04a17a6-23fa-3f28-8215-ddeec25ca4d2
+2022-01-17 15:55:11,740 INFO [main] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 108] Tomcat initialized with port(s): 8999 (http)
+2022-01-17 15:55:11,748 INFO [main] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-8999"]
+2022-01-17 15:55:11,749 INFO [main] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2022-01-17 15:55:11,749 INFO [main] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-01-17 15:55:12,075 INFO [main] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2022-01-17 15:55:12,076 INFO [main] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java : 285] Root WebApplicationContext: initialization completed in 1386 ms
+2022-01-17 15:55:12,200 WARN [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 559] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.cloud.autoconfigure.RefreshAutoConfiguration$JpaInvokerConfiguration': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine suitable jdbc url
+2022-01-17 15:55:12,201 INFO [main] c.a.n.s.c.a.c.NacosValueAnnotationBeanPostProcessor [AnnotationInjectedBeanPostProcessor.java : 288] class com.alibaba.nacos.spring.context.annotation.config.NacosValueAnnotationBeanPostProcessor was destroying!
+2022-01-17 15:55:12,201 INFO [main] c.a.n.s.b.f.a.AnnotationNacosInjectedBeanPostProcessor [AnnotationInjectedBeanPostProcessor.java : 288] class com.alibaba.nacos.spring.beans.factory.annotation.AnnotationNacosInjectedBeanPostProcessor was destroying!
+2022-01-17 15:55:12,202 INFO [main] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Stopping service [Tomcat]
+2022-01-17 15:55:12,222 INFO [main] o.s.b.a.l.ConditionEvaluationReportLoggingListener [ConditionEvaluationReportLoggingListener.java : 136] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-01-17 15:55:12,230 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter [LoggingFailureAnalysisReporter.java : 40] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine suitable jdbc url
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (the profiles aliweb are currently active).
+
+2022-01-17 15:55:32,786 INFO [main] c.a.b.n.c.u.NacosConfigPropertiesUtils [NacosConfigPropertiesUtils.java : 47] nacosConfigProperties : NacosConfigProperties{serverAddr='127.0.0.1:8848', contextPath='null', encode='null', endpoint='null', namespace='null', accessKey='null', secretKey='null', ramRoleName='null', autoRefresh=false, dataId='null', dataIds='null', group='DEFAULT_GROUP', type=null, maxRetry='null', configLongPollTimeout='null', configRetryTime='null', enableRemoteSyncConfig=false, extConfig=[], bootstrap=Bootstrap{enable=false, logEnable=false}}
+2022-01-17 15:55:32,790 INFO [main] c.a.b.n.c.a.NacosConfigApplicationContextInitializer [NacosConfigApplicationContextInitializer.java : 75] [Nacos Config Boot] : The preload configuration is not enabled
+2022-01-17 15:55:33,886 INFO [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 249] Fetching config from server at : http://localhost:8888
+2022-01-17 15:55:34,992 INFO [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 273] Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available
+2022-01-17 15:55:34,993 WARN [main] o.s.c.c.c.ConfigServicePropertySourceLocator [ConfigServicePropertySourceLocator.java : 153] Could not locate PropertySource: I/O error on GET request for "http://localhost:8888/shiji-key-generator/aliweb": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2022-01-17 15:55:34,996 INFO [main] c.a.b.n.c.u.NacosConfigPropertiesUtils [NacosConfigPropertiesUtils.java : 47] nacosConfigProperties : NacosConfigProperties{serverAddr='127.0.0.1:8848', contextPath='null', encode='null', endpoint='null', namespace='null', accessKey='null', secretKey='null', ramRoleName='null', autoRefresh=false, dataId='null', dataIds='null', group='DEFAULT_GROUP', type=null, maxRetry='null', configLongPollTimeout='null', configRetryTime='null', enableRemoteSyncConfig=false, extConfig=[], bootstrap=Bootstrap{enable=false, logEnable=false}}
+2022-01-17 15:55:34,996 INFO [main] c.a.b.n.c.a.NacosConfigApplicationContextInitializer [NacosConfigApplicationContextInitializer.java : 75] [Nacos Config Boot] : The preload configuration is not enabled
+2022-01-17 15:55:34,997 INFO [main] c.shiji.keygenerator.BootApplication [SpringApplication.java : 655] The following profiles are active: aliweb
+2022-01-17 15:55:35,594 INFO [main] o.s.cloud.context.scope.GenericScope [GenericScope.java : 295] BeanFactory id=c04a17a6-23fa-3f28-8215-ddeec25ca4d2
+2022-01-17 15:55:35,946 INFO [main] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 108] Tomcat initialized with port(s): 8999 (http)
+2022-01-17 15:55:35,954 INFO [main] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-8999"]
+2022-01-17 15:55:35,955 INFO [main] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2022-01-17 15:55:35,955 INFO [main] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-01-17 15:55:36,274 INFO [main] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2022-01-17 15:55:36,274 INFO [main] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java : 285] Root WebApplicationContext: initialization completed in 1264 ms
+2022-01-17 15:55:36,461 WARN [main] c.n.c.sources.URLConfigurationSource [URLConfigurationSource.java : 121] No URLs will be polled as dynamic configuration sources.
+2022-01-17 15:55:36,462 INFO [main] c.n.c.sources.URLConfigurationSource [URLConfigurationSource.java : 122] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-17 15:55:36,466 WARN [main] c.n.c.sources.URLConfigurationSource [URLConfigurationSource.java : 121] No URLs will be polled as dynamic configuration sources.
+2022-01-17 15:55:36,466 INFO [main] c.n.c.sources.URLConfigurationSource [URLConfigurationSource.java : 122] To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-01-17 15:55:36,680 INFO [main] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 181] Initializing ExecutorService 'applicationTaskExecutor'
+2022-01-17 15:55:43,839 WARN [main] o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger [BlockingLoadBalancerClientAutoConfiguration.java : 86] You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2022-01-17 15:55:44,259 INFO [main] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-8999"]
+2022-01-17 15:55:44,284 INFO [main] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 220] Tomcat started on port(s): 8999 (http) with context path ''
+2022-01-17 15:55:46,114 INFO [main] c.shiji.keygenerator.BootApplication [StartupInfoLogger.java : 61] Started BootApplication in 14.903 seconds (JVM running for 16.909)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cloud.demo.mapper.AccountMapper">
+    <select id="selectById" resultType="com.cloud.demo.model.Account">
+        select *
+        from account
+        where id = #{id}
+    </select>
+    <update id="updateDepositWithVersion" keyProperty="id" parameterType="com.cloud.demo.model.Account">
+        update account
+        set deposit=#{deposit},
+            version = version + 1
+        where id = #{id}
+          and version = #{version}
+    </update>
+    <select id="selectByIdForUpdate" resultType="com.cloud.demo.model.Account">
+        select *
+        from account
+        where id = #{id} for
+        update
+    </select>
+    <update id="updateDeposit" keyProperty="id" parameterType="com.cloud.demo.model.Account">
+        update account
+        set deposit=#{deposit}
+        where id = #{id}
+    </update>
+    <select id="getTotalDeposit" resultType="java.math.BigDecimal">
+        select sum(deposit) from account;
+    </select>
+</mapper>

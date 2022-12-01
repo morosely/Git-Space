@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../KeyGenerator/KeyGenerator.iml" filepath="$PROJECT_DIR$/../KeyGenerator/KeyGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Patterns.iml" filepath="$PROJECT_DIR$/Patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcl/jcl.iml" filepath="$PROJECT_DIR$/jcl/jcl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jul/jul.iml" filepath="$PROJECT_DIR$/jul/jul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lock-demo/lock-demo.iml" filepath="$PROJECT_DIR$/lock-demo/lock-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log4j/log4j.iml" filepath="$PROJECT_DIR$/log4j/log4j.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log4j2/log4j2.iml" filepath="$PROJECT_DIR$/log4j2/log4j2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/logback/logback.iml" filepath="$PROJECT_DIR$/logback/logback.iml" />
+      <module fileurl="file://$PROJECT_DIR$/slf4j/slf4j.iml" filepath="$PROJECT_DIR$/slf4j/slf4j.iml" />
+    </modules>
+  </component>
+</project>
