@@ -54,9 +54,17 @@ public class ShopStockService {
                     stringRedisTemplate.opsForValue().set("totalStock",String.valueOf(--stock));
                 }
             }
+            addCent();
         }finally {
             redisLock.unlock();
         }
+    }
+
+    public void addCent(){
+        DistributedRedisLock lock = factory.getRedisLock("lock");
+        lock.lock();
+        //log.info("=====》》》》》 重入锁测试");
+        lock.unlock();
     }
 
     //redis分布式锁1.加锁：setnx 2.解锁：del 3.重试：递归
