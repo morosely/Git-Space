@@ -2,6 +2,8 @@ package com.shiji.distributedlock.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.shiji.distributedlock.lock.DistributedLockFactory;
+import com.shiji.distributedlock.lock.DistributedRedisLock;
 import com.shiji.distributedlock.mapper.ShopStockModelMapper;
 import com.shiji.distributedlock.model.ShopStockModel;
 import lombok.extern.slf4j.Slf4j;
@@ -33,9 +35,32 @@ public class ShopStockService {
     private ShopStockModelMapper shopStockMapper;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private DistributedLockFactory factory;
+
+    //redis分布式锁 lua脚本加锁解锁
+    public void deductStock(){
+        DistributedRedisLock redisLock = factory.getRedisLock("lock");
+        redisLock.lock();
+        try {
+            //1.查询库存
+            String totalStock = stringRedisTemplate.opsForValue().get("totalStock").toString();
+            log.info("{} ==========>>> totalStock：{}",Thread.currentThread().getName(),totalStock);
+            //2.判断库存是否充足
+            if(totalStock != null && totalStock.trim().length() > 0){
+                Integer stock = Integer.valueOf(totalStock);
+                if(stock > 0){
+                    //3.扣减库存
+                    stringRedisTemplate.opsForValue().set("totalStock",String.valueOf(--stock));
+                }
+            }
+        }finally {
+            redisLock.unlock();
+        }
+    }
 
     //redis分布式锁1.加锁：setnx 2.解锁：del 3.重试：递归
-    public void deductStock(){
+    public void deductStock6(){
         String uuid = UUID.randomUUID().toString();
         //（优化代码）递归重试 -> 循环重试获取锁
         //while(!stringRedisTemplate.opsForValue().setIfAbsent("lock","1")){
@@ -70,8 +95,8 @@ public class ShopStockService {
             }*/
             //使用lua脚本解决防误删除原子性问题
             String script = "if redis.call('get',KEYS[1]) == ARGV[1] then return redis.call('del',KEYS[1]) else return 0 end";
-            Object result = this.stringRedisTemplate.execute(new DefaultRedisScript(script,Boolean.class), Arrays.asList("lock"),uuid);
-            //System.out.println("result ----------> " + result);
+            Boolean result = this.stringRedisTemplate.execute(new DefaultRedisScript<>(script,Boolean.class), Arrays.asList("lock"),uuid);
+            log.info("{} ==========>>> result：{}",Thread.currentThread().getName(),result);
         }
 
 
