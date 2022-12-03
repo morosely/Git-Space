@@ -54,8 +54,11 @@ public class ShopStockService {
                     stringRedisTemplate.opsForValue().set("totalStock",String.valueOf(--stock));
                 }
             }
-            addCent();
-        }finally {
+            //addCent();
+            //TimeUnit.SECONDS.sleep(300);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             redisLock.unlock();
         }
     }

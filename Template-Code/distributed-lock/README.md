@@ -142,11 +142,24 @@
                     else    
                         return 0
                     end
+                    参数:
                     KEYS:lock
                     ARGV:uuid
                     lua脚本
                     eval "if redis.call('hexists',KEYS[1],ARGV[1]) == 0 then return nil elseif redis.call('hincrby',KEYS[1],ARGV[1],-1) == 0 then return redis.call('del',KEYS[1]) else return 0 end" 1 lock 1234567890
-            6.自动续期
+            6.自动续期：定时任务（时间驱动 Timer定时器） + lua脚本
+                判断自己的锁是否存在（hexists）如果存在则重置过期时间
+                    if redis.call('hexists',KEYS[1],ARGV[1]) == 1
+                    then
+                        return redis.call('expire',KEYS[1],ARGV[2])
+                    else
+                      return 0
+                    end
+                参数:
+                KEYS:lock
+                ARGV:uuid 30
+                lua脚本
+                eval "if redis.call('hexists',KEYS[1],ARGV[1]) == 1 then return redis.call('expire',KEYS[1],ARGV[2]) else return 0 end" 1 lock 1234567890 30
             操作：
                 1.加锁：setnx
                 2.解锁：del
