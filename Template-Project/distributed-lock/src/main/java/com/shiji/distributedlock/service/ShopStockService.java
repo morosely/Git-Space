@@ -7,6 +7,8 @@ import com.shiji.distributedlock.lock.DistributedRedisLock;
 import com.shiji.distributedlock.mapper.ShopStockModelMapper;
 import com.shiji.distributedlock.model.ShopStockModel;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -37,9 +39,35 @@ public class ShopStockService {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private DistributedLockFactory factory;
+    @Autowired
+    private RedissonClient redissonClient;
+
+
+    //redisson
+    public void deductStock(){
+        RLock lock = redissonClient.getLock("lock");
+        lock.lock();
+        try {
+            //1.查询库存
+            String totalStock = stringRedisTemplate.opsForValue().get("totalStock").toString();
+            log.info("{} ==========>>> totalStock：{}",Thread.currentThread().getName(),totalStock);
+            //2.判断库存是否充足
+            if(totalStock != null && totalStock.trim().length() > 0){
+                Integer stock = Integer.valueOf(totalStock);
+                if(stock > 0){
+                    //3.扣减库存
+                    stringRedisTemplate.opsForValue().set("totalStock",String.valueOf(--stock));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
 
     //redis分布式锁 lua脚本加锁解锁
-    public void deductStock(){
+    public void deductStock7(){
         DistributedRedisLock redisLock = factory.getRedisLock("lock");
         redisLock.lock();
         try {
