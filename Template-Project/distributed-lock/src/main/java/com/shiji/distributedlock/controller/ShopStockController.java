@@ -17,6 +17,18 @@ public class ShopStockController {
 
     private AtomicInteger requestCount = new AtomicInteger(0);
 
+    @GetMapping("test/read")
+    public String testRead(){
+        String msg = service.testRead();
+        return "测试读";
+    }
+
+    @GetMapping("test/write")
+    public String testWrite(){
+        String msg = service.testWrite();
+        return "测试写";
+    }
+
     @GetMapping("stock/deduct")
     public String deductStock(){
         //log.info("【Controller】 {} ==========>>> requestCount：{}" ,Thread.currentThread().getName(), requestCount.incrementAndGet());

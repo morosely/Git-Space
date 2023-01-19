@@ -8,6 +8,7 @@ import com.shiji.distributedlock.mapper.ShopStockModelMapper;
 import com.shiji.distributedlock.model.ShopStockModel;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
+import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -18,7 +19,6 @@ import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -42,9 +42,63 @@ public class ShopStockService {
     @Autowired
     private RedissonClient redissonClient;
 
+    // 读写锁（ReadWriteLock）
+    public void deductStock() {
+        RReadWriteLock rwlock = redissonClient.getReadWriteLock("anyRWLock");
+        // 最常见的使用方法
+        rwlock.readLock().lock();
+        // 或
+        rwlock.writeLock().lock();
 
-    //redisson
-    public void deductStock(){
+        // 10秒钟以后自动解锁
+        // 无需调用unlock方法手动解锁
+        rwlock.readLock().lock(10, TimeUnit.SECONDS);
+        // 或
+        rwlock.writeLock().lock(10, TimeUnit.SECONDS);
+
+        // 尝试加锁，最多等待100秒，上锁以后10秒自动解锁
+        //boolean res = rwlock.readLock().tryLock(100, 10, TimeUnit.SECONDS);
+        // 或
+        //boolean res = rwlock.writeLock().tryLock(100, 10, TimeUnit.SECONDS);
+        lock.unlock();
+    }
+
+    public String testRead() {
+        RReadWriteLock rwLock = this.redissonClient.getReadWriteLock("rwLock");
+        rwLock.readLock().lock(10, TimeUnit.SECONDS);
+        System.out.println("测试读锁。。。。");
+        // rwLock.readLock().unlock();
+        return null;
+    }
+
+    public String testWrite() {
+        RReadWriteLock rwLock = this.redissonClient.getReadWriteLock("rwLock");
+        rwLock.writeLock().lock(10, TimeUnit.SECONDS);
+        System.out.println("测试写锁。。。。");
+        // rwLock.writeLock().unlock();
+        return null;
+    }
+
+
+    //redisson 可重入锁（Reentrant Lock）
+    public void deductStock9() {
+        RLock fairLock = redissonClient.getFairLock("anyLock");
+        // (手工加锁)最常见的使用方法
+        fairLock.lock();
+
+        // 10秒钟以后自动解锁
+        // 无需调用unlock方法手动解锁
+        fairLock.lock(10, TimeUnit.SECONDS);
+
+        // 尝试加锁，最多等待100秒，上锁以后10秒自动解锁
+        //boolean res = fairLock.tryLock(100, 10, TimeUnit.SECONDS);
+
+        // (手工解锁)最常见的使用方法
+        fairLock.unlock();
+    }
+
+    //redisson 可重入锁（Reentrant Lock）
+    public void deductStock8(){
         RLock lock = redissonClient.getLock("lock");
         lock.lock();
         try {
