@@ -26,7 +26,7 @@ public class RedissonConfig {
                 .setConnectionPoolSize(50) // 连接池最大线程数
                 .setIdleConnectionTimeout(60000) // 线程超时时间释放空闲连接：50-10=40
                 .setConnectTimeout(1000) // 程序获取连接的超时时间
-                .setTimeout(3000); //响应超时时间
+                .setTimeout(3000); // 响应超时时间
         RedissonClient redisson = Redisson.create(config);
         return redisson;
     }

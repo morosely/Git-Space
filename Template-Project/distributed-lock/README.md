@@ -40,9 +40,9 @@
             server_name  localhost;
             location / {
                 proxy_pass http://distributedLock;
-                proxy_connect_timeout    600;
-                proxy_read_timeout       600;
-                proxy_send_timeout       600;
+                proxy_connect_timeout    1200;
+                proxy_read_timeout       1200;
+                proxy_send_timeout       1200;
                 proxy_http_version 1.1;
                 proxy_set_header Connection "";
             }

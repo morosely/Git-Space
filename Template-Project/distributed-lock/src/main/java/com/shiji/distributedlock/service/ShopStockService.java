@@ -80,20 +80,20 @@ public class ShopStockService {
     }
 
 
-    //redisson 可重入锁（Reentrant Lock）
-    public void deductStock9() {
-        RLock fairLock = redissonClient.getFairLock("anyLock");
-        // (手工加锁)最常见的使用方法
+    //redisson 公平锁（Fair Lock）
+    public void fairLock(Long id) throws InterruptedException {
+        RLock fairLock = redissonClient.getFairLock("fairLock");
+        //RLock fairLock = redissonClient.getLock("lock"); nginx造成超时重发，需要配置三个参数：proxy_connect_timeout、proxy_read_timeout、proxy_send_timeout
+        // 最常见的使用方法
         fairLock.lock();
-
+        TimeUnit.SECONDS.sleep(10);
+        System.out.println("==========> id : " + id);
         // 10秒钟以后自动解锁
         // 无需调用unlock方法手动解锁
-        fairLock.lock(10, TimeUnit.SECONDS);
+        //fairLock.lock(10, TimeUnit.SECONDS);
 
         // 尝试加锁，最多等待100秒，上锁以后10秒自动解锁
         //boolean res = fairLock.tryLock(100, 10, TimeUnit.SECONDS);
-
-        // (手工解锁)最常见的使用方法
         fairLock.unlock();
     }
 

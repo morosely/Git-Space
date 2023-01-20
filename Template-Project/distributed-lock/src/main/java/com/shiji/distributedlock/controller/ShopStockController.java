@@ -4,6 +4,7 @@ import com.shiji.distributedlock.service.ShopStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,6 +28,12 @@ public class ShopStockController {
     public String testWrite(){
         String msg = service.testWrite();
         return "测试写";
+    }
+
+    @GetMapping("fairLock/{id}")
+    public String fairLock(@PathVariable("id") Long id) throws InterruptedException {
+        service.fairLock(id);
+        return "fairLock is success";
     }
 
     @GetMapping("stock/deduct")
