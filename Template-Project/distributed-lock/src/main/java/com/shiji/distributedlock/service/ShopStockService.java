@@ -2,14 +2,13 @@ package com.shiji.distributedlock.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.shiji.distributedlock.config.IPConfig;
 import com.shiji.distributedlock.lock.DistributedLockFactory;
 import com.shiji.distributedlock.lock.DistributedRedisLock;
 import com.shiji.distributedlock.mapper.ShopStockModelMapper;
 import com.shiji.distributedlock.model.ShopStockModel;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.api.RLock;
-import org.redisson.api.RReadWriteLock;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -41,9 +40,64 @@ public class ShopStockService {
     private DistributedLockFactory factory;
     @Autowired
     private RedissonClient redissonClient;
+    @Autowired
+    private IPConfig ip;
 
-    // 读写锁（ReadWriteLock）
-    public void deductStock() {
+    //闭锁（CountDownLatch）(需要两个方法：一个等待await，一个计数countDown)
+    public void countDownLatch() throws InterruptedException {
+        //一个等待await
+        RCountDownLatch latch = redissonClient.getCountDownLatch("anyCountDownLatch");
+        latch.trySetCount(1);
+        latch.await();
+
+        // 在其他线程或其他JVM里(一个计数countDown)
+        latch = redissonClient.getCountDownLatch("anyCountDownLatch");
+        latch.countDown();
+    }
+
+    public void testLatch() {
+        RCountDownLatch latch = this.redissonClient.getCountDownLatch("latch");
+        latch.trySetCount(6);
+
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void testCountDown() {
+        RCountDownLatch latch = this.redissonClient.getCountDownLatch("latch");
+        latch.trySetCount(6);
+
+        latch.countDown();
+    }
+
+
+    //信号量（Semaphore）
+    public void semaphore() throws InterruptedException {
+        RSemaphore semaphore = redissonClient.getSemaphore("semaphore");
+        semaphore.trySetPermits(3);
+        semaphore.acquire();
+        semaphore.release();
+    }
+
+    public void testSemaphore() {
+        RSemaphore semaphore = this.redissonClient.getSemaphore("semaphore");
+        try {
+            semaphore.acquire(2);
+            System.out.println(ip.getPort()+"获取资源！Start 开始处理业务逻辑 "+Thread.currentThread().getName());
+            TimeUnit.SECONDS.sleep(5);
+            System.out.println(ip.getPort()+"释放资源 End "+Thread.currentThread().getName());
+
+            semaphore.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //读写锁（ReadWriteLock）
+    public void readWriteLock() {
         RReadWriteLock rwlock = redissonClient.getReadWriteLock("anyRWLock");
         // 最常见的使用方法
         rwlock.readLock().lock();
@@ -98,7 +152,7 @@ public class ShopStockService {
     }
 
     //redisson 可重入锁（Reentrant Lock）
-    public void deductStock8(){
+    public void deductStock(){
         RLock lock = redissonClient.getLock("lock");
         lock.lock();
         try {
@@ -360,4 +414,5 @@ public class ShopStockService {
             lock.unlock();
         }
     }
+
 }

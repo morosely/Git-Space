@@ -18,6 +18,24 @@ public class ShopStockController {
 
     private AtomicInteger requestCount = new AtomicInteger(0);
 
+    @GetMapping("test/latch")
+    public String testLatch(){
+        this.service.testLatch();
+        return "班长锁门。。。";
+    }
+
+    @GetMapping("test/countdown")
+    public String testCountDown(){
+        this.service.testCountDown();
+        return "出来了一位同学";
+    }
+
+    @GetMapping("test/semaphore")
+    public String testSemaphore(){
+        this.service.testSemaphore();
+        return "测试信号量";
+    }
+
     @GetMapping("test/read")
     public String testRead(){
         String msg = service.testRead();
