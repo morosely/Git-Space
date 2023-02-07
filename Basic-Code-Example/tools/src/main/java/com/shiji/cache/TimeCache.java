@@ -14,7 +14,7 @@ public class TimeCache {
 
         timedCache.put("key1", "value1", DateUnit.SECOND.getMillis() * 10);
         timedCache.put("key2", "value2", DateUnit.SECOND.getMillis() * 15);
-        timedCache.put("key3", "value3");//默认过期(4毫秒)
+        timedCache.put("key3", "value3");//默认过期(5秒)
 
         //timedCache.schedulePrune(DateUnit.SECOND.getMillis() * 5);
         System.out.println(DateUtil.now() + " ---> " +timedCache);

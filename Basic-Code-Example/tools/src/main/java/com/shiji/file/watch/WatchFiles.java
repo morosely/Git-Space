@@ -1,4 +1,4 @@
-package com.shiji.file;
+package com.shiji.file.watch;
 
 import cn.hutool.core.io.watch.WatchMonitor;
 import cn.hutool.core.io.watch.Watcher;
