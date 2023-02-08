@@ -15,7 +15,7 @@ public class SearchReplaceFile {
     private static String replaceStr = "查-询-异-常";//要查找的字符串
 
     private static Boolean ingronCase = true;// 是否区分大小写
-    private static Boolean isReplaceFlag = false;// 是否开启替换功能
+    private static Boolean onOrOffReplaceFile = false;// 是否开启替换功能
     private static List<String>  filePathList = new ArrayList<String>();
 
     public static void main(String[] args) throws Exception {
@@ -26,7 +26,7 @@ public class SearchReplaceFile {
             BufferedWriter writer = null;
             StringBuilder sb = new StringBuilder();// 使用StringBuilder对象保存文件内容
             File file = new File(filePathList.get(k));
-            boolean hasReplaceFile = false;
+            boolean needReplace = false;
             if (file.exists()) {
                 String filePath = file.toString();
                 count++;
@@ -44,7 +44,7 @@ public class SearchReplaceFile {
                                 if(!lineText.trim().startsWith("//") && !lineText.trim().startsWith("*") && !lineText.trim().startsWith("logger")){
                                     System.out.println("在【" + filePath +":"+ lineNum + "】文件中找到了:【" + searchStr + "】:\n内容："+lineText);
                                     lineText = lineText.replace(searchStr, replaceStr);
-                                    hasReplaceFile = true;
+                                    needReplace = true;
                                 }
 
                                 //break;
@@ -54,7 +54,7 @@ public class SearchReplaceFile {
                                 if(!lineText.trim().startsWith("//") && !lineText.trim().startsWith("*") && !lineText.trim().startsWith("logger")){
                                     System.out.println("在【" + filePath +":"+ lineNum + "】文件中找到了:【" + searchStr + "】:\n内容："+lineText);
                                     lineText = lineText.replace(searchStr, replaceStr);
-                                    hasReplaceFile = true;
+                                    needReplace = true;
                                 }
                                 //break;
                             }
@@ -62,7 +62,7 @@ public class SearchReplaceFile {
                         fileContents.add(lineText);//将数据存入集合
                     }
                     //只有查到替换的文本才能写
-                    if(isReplaceFlag && hasReplaceFile) {
+                    if(onOrOffReplaceFile && needReplace) {
                         writer = new BufferedWriter(new FileWriter(file));
                         for (String string : fileContents) {
                             writer.write(string);//一行一行写入数据
@@ -71,7 +71,7 @@ public class SearchReplaceFile {
                     }
 
                 } catch (Exception e) {
-                    System.err.println("读取文件错误 :" + e);
+                    e.printStackTrace();
                 }finally {
                     if(reader!=null){
                         reader.close();
