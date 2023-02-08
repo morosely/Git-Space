@@ -11,7 +11,7 @@ public class SearchReplaceFile {
 
     private static String fileEnd = "java";// 文件名称后缀 txt sql bat
 
-    private static String searchStr = "查询异常";//要查找的字符串
+    private static String searchStr = "查询";//要查找的字符串
     private static String replaceStr = "查-询-异-常";//要查找的字符串
 
     private static Boolean ingronCase = true;// 是否区分大小写
@@ -41,7 +41,7 @@ public class SearchReplaceFile {
                         ++lineNum;
                         if (ingronCase) {
                             if (lineText.contains(searchStr) ) {
-                                if(!"//".equals(lineText.trim().substring(0,2)) && !"*".equals(lineText.trim().substring(0,1))){
+                                if(!lineText.trim().startsWith("//") && !lineText.trim().startsWith("*") && !lineText.trim().startsWith("logger")){
                                     System.out.println("在【" + filePath +":"+ lineNum + "】文件中找到了:【" + searchStr + "】:\n内容："+lineText);
                                     lineText = lineText.replace(searchStr, replaceStr);
                                     hasReplaceFile = true;
@@ -51,7 +51,7 @@ public class SearchReplaceFile {
                             }
                         } else {
                             if (lineText.toLowerCase().contains(searchStr.toLowerCase())) {
-                                if(!"//".equals(lineText.trim().substring(0,2)) && !"*".equals(lineText.trim().substring(0,1))){
+                                if(!lineText.trim().startsWith("//") && !lineText.trim().startsWith("*") && !lineText.trim().startsWith("logger")){
                                     System.out.println("在【" + filePath +":"+ lineNum + "】文件中找到了:【" + searchStr + "】:\n内容："+lineText);
                                     lineText = lineText.replace(searchStr, replaceStr);
                                     hasReplaceFile = true;
