@@ -33,12 +33,13 @@ public interface DecimalAccount {
         System.out.println(account.getBalance());
     }
 
-    public static void updateAndGet(AtomicInteger atomicInteger, IntUnaryOperator operator){
+    public static int updateAndGet(AtomicInteger atomicInteger, IntUnaryOperator operator){
         while (true) {
             int prev = atomicInteger.get();
             int next = operator.applyAsInt(prev);
             if (atomicInteger.compareAndSet(prev, next)) {
-                break;
+                //break;
+                return next;
             }
         }
     }

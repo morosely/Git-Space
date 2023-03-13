@@ -32,7 +32,7 @@ public class DecimalAccountSafeCas implements DecimalAccount {
         //DecimalAccount.runningThread(new DecimalAccountSafeCas(new BigDecimal("10000")));
 
         AtomicInteger atomicInteger = new AtomicInteger(30);
-        DecimalAccount.updateAndGet(atomicInteger, p -> p / 10);
-        System.out.println("atomicInteger = " + atomicInteger.get());
+        System.out.println("atomicInteger = " + DecimalAccount.updateAndGet(atomicInteger, p -> p / 10));
+        //System.out.println("atomicInteger = " + atomicInteger.get());
     }
 }
