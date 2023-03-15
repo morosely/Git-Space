@@ -11,11 +11,11 @@ public class MyScheduledThreadPoolExecutor {
         scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName() + ":测试测试ScheduledThreadPoolExecutor");
+                System.out.println(Thread.currentThread().getId()+":"+Thread.currentThread().getName() + "---> 测试测试ScheduledThreadPoolExecutor");
             }
         }, 1, 1, TimeUnit.SECONDS);
         //主线程休眠10秒
-        Thread.sleep(10000);
+        TimeUnit.SECONDS.sleep(10);
         System.out.println("正在关闭线程池...");
         // 关闭线程池
         scheduledExecutorService.shutdown();
