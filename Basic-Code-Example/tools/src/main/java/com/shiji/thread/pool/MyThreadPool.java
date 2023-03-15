@@ -5,23 +5,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MyThreadPool {
 
-    private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
-    private static final int COUNT_BITS = Integer.SIZE - 3;
-    private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
+    public final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+    public static final int COUNT_BITS = Integer.SIZE - 3;
+    public static final int CAPACITY   = (1 << COUNT_BITS) - 1;
 
     // runState is stored in the high-order bits
-    private static final int RUNNING    = -1 << COUNT_BITS;
-    private static final int SHUTDOWN   =  0 << COUNT_BITS;
-    private static final int STOP       =  1 << COUNT_BITS;
-    private static final int TIDYING    =  2 << COUNT_BITS;
-    private static final int TERMINATED =  3 << COUNT_BITS;
+    public static final int RUNNING    = -1 << COUNT_BITS;
+    public static final int SHUTDOWN   =  0 << COUNT_BITS;
+    public static final int STOP       =  1 << COUNT_BITS;
+    public static final int TIDYING    =  2 << COUNT_BITS;
+    public static final int TERMINATED =  3 << COUNT_BITS;
 
     // Packing and unpacking ctl
-    private static int runStateOf(int c)     { return c & ~CAPACITY; }
-    private static int workerCountOf(int c)  { return c & CAPACITY; }
-    private static int ctlOf(int rs, int wc) { return rs | wc; }
+    public static int runStateOf(int c)     { return c & ~CAPACITY; }
+    public static int workerCountOf(int c)  { return c & CAPACITY; }
+    public static int ctlOf(int rs, int wc) { return rs | wc; }
 
-    private static final byte status_run = -1 << 4;
+    public static final byte status_run = -1 << 4;
 
     /*
      * Bit field accessors that don't require unpacking ctl.
@@ -48,13 +48,13 @@ public class MyThreadPool {
 //        binary(STOP);
 //        binary(TIDYING);
 //        binary(TERMINATED);
-//        binary(new MyThreadPool().ctl.get());
+          binary(ctlOf(MyThreadPool.RUNNING, 0));
 //        binary8(status_run);
-          Thread t1 = new Tread1();
-          Thread t2 = new Tread2();
-          t1.start();
-          t2.setDaemon(true);
-          t2.start();
+//          Thread t1 = new Tread1();
+//          Thread t2 = new Tread2();
+//          t1.start();
+//          t2.setDaemon(true);
+//          t2.start();
     }
 
 
