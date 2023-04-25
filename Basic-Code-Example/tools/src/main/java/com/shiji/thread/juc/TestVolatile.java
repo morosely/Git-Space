@@ -11,7 +11,7 @@ package com.shiji.thread.juc;
 public class TestVolatile {
 	
 	public static void main(String[] args) {
-		ThreadDemo td = new ThreadDemo();
+		ThreadOne td = new ThreadOne();
 		new Thread(td).start();
 		
 		while(true){
@@ -25,7 +25,7 @@ public class TestVolatile {
 
 }
 
-class ThreadDemo implements Runnable {
+class ThreadOne implements Runnable {
 
 	private /*volatile*/ boolean flag = false;
 
