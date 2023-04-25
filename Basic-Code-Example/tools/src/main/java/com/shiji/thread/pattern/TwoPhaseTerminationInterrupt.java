@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 //interrupt 可以打断正在执行的线程，无论这个线程是在 sleep，wait，还是正常运行
 @Slf4j
-public class TPTInterrupt{
+public class TwoPhaseTerminationInterrupt {
 
     private Thread thread;
 
@@ -35,7 +35,7 @@ public class TPTInterrupt{
     }
 
     public static void main(String[] args) throws Exception {
-        TPTInterrupt t = new TPTInterrupt();
+        TwoPhaseTerminationInterrupt t = new TwoPhaseTerminationInterrupt();
         t.start();
         Thread.sleep(1000);
         //log.debug("stop");

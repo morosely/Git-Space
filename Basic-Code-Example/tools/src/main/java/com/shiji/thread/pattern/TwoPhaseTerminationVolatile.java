@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 // 停止标记用 volatile 是为了保证该变量在多个线程之间的可见性
 // 我们的例子中，即主线程把它修改为 true 对 t1 线程可见
 @Slf4j
-public class TPTVolatile {
+public class TwoPhaseTerminationVolatile {
 
     private Thread thread;
     private volatile boolean stop = false;
@@ -36,7 +36,7 @@ public class TPTVolatile {
     }
 
     public static void main(String[] args) throws Exception {
-        TPTVolatile t = new TPTVolatile();
+        TwoPhaseTerminationVolatile t = new TwoPhaseTerminationVolatile();
         t.start();
         Thread.sleep(5000);
         log.debug("stop");
