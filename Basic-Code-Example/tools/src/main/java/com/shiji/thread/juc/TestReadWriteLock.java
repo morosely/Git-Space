@@ -1,4 +1,4 @@
-package com.atguigu.juc;
+package com.shiji.thread.juc;
 
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;

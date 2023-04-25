@@ -1,7 +1,5 @@
-package com.atguigu.juc;
+package com.shiji.thread.juc;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;

@@ -1,4 +1,4 @@
-package com.atguigu.juc;
+package com.shiji.thread.juc;
 
 /*
  * 模拟 CAS 算法

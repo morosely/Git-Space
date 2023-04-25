@@ -1,4 +1,4 @@
-package com.atguigu.juc;
+package com.shiji.thread.juc;
 
 
  //生产者和消费者案例
