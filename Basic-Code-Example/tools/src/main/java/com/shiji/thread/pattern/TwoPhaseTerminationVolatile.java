@@ -15,12 +15,12 @@ public class TwoPhaseTerminationVolatile {
             while(true) {
                 Thread current = Thread.currentThread();
                 if(stop) {
-                    log.debug("料理后事");
+                    log.debug("监控结束!");
                     break;
                 }
                 try {
                     Thread.sleep(1000);
-                    log.debug("将结果保存");
+                    log.debug("程序正在监控中......");
                 } catch (InterruptedException e) {
                     //e.printStackTrace();
                 }
