@@ -1,35 +1,35 @@
 package com.shiji.thread.volatiled;
 
 public class VolatileTest {
+    private volatile long count = 0;
+
+    private void addCount(){
+        count ++;
+    }
+
+    public long execute() throws InterruptedException {
+        Thread threadA = new Thread(() -> {
+            for(int i = 0; i < 1000; i++){
+                addCount();
+            }
+        });
+        Thread threadB = new Thread(() -> {
+            for(int i = 0; i < 1000; i++){
+                addCount();
+            }
+        });
+        //启动线程
+        threadA.start();
+        threadB.start();
+        //等待线程执行完成
+        threadA.join();
+        threadB.join();
+        return count;
+    }
 
     public static void main(String[] args) throws InterruptedException {
-        Student student = new Student();
-        student.start();
-        for(int i = 0; i < 10 ; i++){
-            Thread.sleep(1000);
-            System.out.println("1.主线程输出...student.falg:"+student.isFlag());
-            //synchronized (student){
-                if (student.isFlag()){
-                    System.out.println("2.主线程输出...student.falg:"+student.isFlag());
-                }
-            //}
-        }
-    }
-}
-
-class Student extends Thread {
-    private  boolean flag = false;
-    public boolean isFlag( ) {
-        return flag;
-    }
-    @Override
-    public void run() {
-        try{
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        flag = true;
-        System.out.println("flag ===> "+flag);
+        VolatileTest thread = new VolatileTest();
+        long count = thread.execute();
+        System.out.println(count);
     }
 }
