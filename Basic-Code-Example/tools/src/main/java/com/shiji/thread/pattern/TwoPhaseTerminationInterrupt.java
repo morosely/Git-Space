@@ -22,6 +22,7 @@ public class TwoPhaseTerminationInterrupt {
                     Thread.sleep(10000);
                     log.debug("程序正在监控中......");
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                     current.interrupt();
                 }
                 // 执行监控操作

@@ -57,6 +57,8 @@ public class MonitorService {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
+            e.printStackTrace();
+            monitorThread.interrupt();
         }
     }
 
