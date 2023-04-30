@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class DecimalAccountSafeCas implements DecimalAccount {
 
+    //原子引用 AtomicReference
     private AtomicReference<BigDecimal> ref;
 
     public DecimalAccountSafeCas(BigDecimal balance) {
