@@ -15,9 +15,10 @@ import java.util.function.Supplier;
  * AtomicLongArray
  * AtomicReferenceArray
  */
-public class AtomicArray {
+public class AtomicArrayTest {
 
     public static void main(String[] args) {
+        //不安全的数组
         demo(
                 ()->new int[10],
                 (array)->array.length,
@@ -25,6 +26,7 @@ public class AtomicArray {
                 array-> System.out.println(Arrays.toString(array))
         );
 
+        //安全的数组
         demo(
                 ()-> new AtomicIntegerArray(10),
                 (array) -> array.length(),
