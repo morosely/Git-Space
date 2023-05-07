@@ -1,0 +1,50 @@
+easy-trans:
+  #启用redis缓存 如果不用redis请设置为false
+  is-enable-redis: true
+  #启用全局翻译(拦截所有responseBody进行自动翻译)，如果对于性能要求很高可关闭此配置
+  is-enable-global: true
+  #启用平铺模式
+  is-enable-tile: true
+  #字典缓存放到redis 微服务模式请开启
+  dict-use-redis: true
+  # ruoyi相关的请开启
+  is-enable-map-result: true
+
+spring:
+  application:
+    name: trans-i18n
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    initialSize: 1
+    maxActive: 20
+    maxOpenPreparedStatements: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 1
+    name: basics
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: trueserver
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.17.13.81:3306/easy_trans_demo?useUnicode=true&useSSL=false&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    validationQuery: select 'x'
+  redis:
+    host: 172.17.13.81
+    port: 7380
+    password: shijiredis1101
+    database: 4
+    timeout: 6000
+
+# \u8BE5\u914D\u7F6E\u8282\u70B9\u4E3A\u72EC\u7ACB\u7684\u8282\u70B9\uFF0C\u6709\u5F88\u591A\u540C\u5B66\u5BB9\u6613\u5C06\u8FD9\u4E2A\u914D\u7F6E\u653E\u5728spring\u7684\u8282\u70B9\u4E0B\uFF0C\u5BFC\u81F4\u914D\u7F6E\u65E0\u6CD5\u88AB\u8BC6\u522B
+mybatis:
+  mapper-locations: classpath*:mapper/*/*.xml
+  type-aliases-package: com.shiji.transi18n.model
+
+logging:
+  level:
+    com.fhs: debug

@@ -1,0 +1,7 @@
+package com.shiji.transi18n.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class StudentController {
+}
