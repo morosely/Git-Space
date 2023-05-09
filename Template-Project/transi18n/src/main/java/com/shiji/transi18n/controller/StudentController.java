@@ -15,8 +15,8 @@ public class StudentController {
         List list = new ArrayList<>();
         for(int i =0 ;i < 3; i++){
             Student student = new Student();
-            student.setName("张三");
-            student.setSex(2);
+            student.setName("张三-"+i);
+            student.setSex(i%2);
             student.setMiddleSchoolId("1");
             student.setSchoolId(String.valueOf(1));
             student.setId(String.valueOf(i));
