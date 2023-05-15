@@ -1,4 +1,4 @@
-package com.shiji.thread.pattern;
+package com.shiji.thread.unsafe;
 
 import lombok.Data;
 import sun.misc.Unsafe;
@@ -17,7 +17,7 @@ public class UnsafeAccessor {
             throw new Error(e);
         }
     }
-    static Unsafe getUnsafe() {
+    public static Unsafe getUnsafe() {
         return unsafe;
     }
 
