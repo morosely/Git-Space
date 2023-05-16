@@ -40,11 +40,10 @@ spring:
     database: 4
     timeout: 6000
 
-# \u8BE5\u914D\u7F6E\u8282\u70B9\u4E3A\u72EC\u7ACB\u7684\u8282\u70B9\uFF0C\u6709\u5F88\u591A\u540C\u5B66\u5BB9\u6613\u5C06\u8FD9\u4E2A\u914D\u7F6E\u653E\u5728spring\u7684\u8282\u70B9\u4E0B\uFF0C\u5BFC\u81F4\u914D\u7F6E\u65E0\u6CD5\u88AB\u8BC6\u522B
 mybatis:
   mapper-locations: classpath*:mapper/*/*.xml
   type-aliases-package: com.shiji.transi18n.model
 
 logging:
   level:
-    com.fhs: debug
+    com.shiji: debug
