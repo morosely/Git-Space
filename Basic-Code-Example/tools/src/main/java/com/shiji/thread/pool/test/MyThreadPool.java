@@ -1,4 +1,4 @@
-package com.shiji.thread.pool;
+package com.shiji.thread.pool.test;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;

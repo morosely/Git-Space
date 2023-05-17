@@ -1,4 +1,4 @@
-package com.shiji.thread.pool;
+package com.shiji.thread.pool.my;
 
 @FunctionalInterface
 // 拒绝策略

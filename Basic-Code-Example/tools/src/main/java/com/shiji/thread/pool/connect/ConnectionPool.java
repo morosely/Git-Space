@@ -1,4 +1,4 @@
-package com.shiji.thread.pool;
+package com.shiji.thread.pool.connect;
 
 import lombok.extern.slf4j.Slf4j;
 
