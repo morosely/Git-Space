@@ -15,4 +15,8 @@ public class StudentService {
     public List<Student> list(){
         return studentMapper.selectList(null);
     }
+
+    public Student one(Integer id) {
+        return studentMapper.selectById(id);
+    }
 }

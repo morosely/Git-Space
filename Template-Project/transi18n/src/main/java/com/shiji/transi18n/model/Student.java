@@ -29,8 +29,8 @@ public class Student implements TransPojo {
     private String schoolId;
 
     //远程翻译，调用其他微服务的数据源进行翻译
-    //@Trans(type = TransType.RPC,targetClassName = "com.fhs.test.pojo.School",fields = "schoolName",serviceName = "easyTrans",alias = "middle")
-    //private String middleSchoolId;
+//    @Trans(type = TransType.RPC,targetClassName = "com.shiji.transi18n.model.School",fields = "schoolName",serviceName = "trans-i18n",alias = "middle")
+//    private String schoolId;
 
     //枚举翻译，返回文科还是理科给前端
     @Trans(type=TransType.ENUM,key = "desc")
