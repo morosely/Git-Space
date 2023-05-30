@@ -2,23 +2,22 @@ package com.shiji.transi18n.controller;
 
 import com.fhs.trans.advice.EasyTransResponseBodyAdvice;
 import com.shiji.transi18n.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class StudentController {
 
     private EasyTransResponseBodyAdvice transService;
-    @Resource
-    private com.shiji.transi18n.mapper.StudentMapper studentMapper;
+    @Autowired
+    private com.shiji.transi18n.service.StudentService studentService;
 
     @GetMapping("/list")
     public List<Student> students(){
-        List list = new ArrayList<>();
+        /*List list = new ArrayList<>();
         for(int i =0 ;i < 2; i++){
             Student student = new Student();
             student.setName("张三-"+i);
@@ -28,8 +27,8 @@ public class StudentController {
             student.setId(String.valueOf(i));
             list.add(student);
         }
-        return list;
-        //return studentMapper.selectList(null);
+        return list;*/
+        return studentService.list();
     }
 
 }

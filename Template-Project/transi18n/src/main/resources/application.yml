@@ -29,9 +29,9 @@ spring:
     testWhileIdle: trueserver
     timeBetweenEvictionRunsMillis: 60000
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://172.17.13.81:3306/easy_trans_demo?useUnicode=true&useSSL=false&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://47.114.209.185:3303/omdmain?useUnicode=true&useSSL=false&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8
     username: root
-    password: 123456
+    password: ULP3Z68ejCbY4pGgwasN
     validationQuery: select 'x'
   redis:
     host: 172.17.13.81
@@ -43,6 +43,13 @@ spring:
 mybatis:
   mapper-locations: classpath*:mapper/*/*.xml
   type-aliases-package: com.shiji.transi18n.model
+
+mybatis-plus:
+  configuration:
+    # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    map-underscore-to-camel-case: false
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 logging:
   level:
