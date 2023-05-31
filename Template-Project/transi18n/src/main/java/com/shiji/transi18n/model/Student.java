@@ -1,6 +1,5 @@
 package com.shiji.transi18n.model;
 
-import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
@@ -46,24 +45,13 @@ public class Student implements TransPojo {
 
     @Override
     public String toString() {
-        try{
-            return "Student{" +
-                    "sex=" + sex +
-                    ", id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    ", schoolId='" + schoolId + '\'' +
-                    ", studentType=" + studentType +'\'' +
-                    ", transMap = " + ReflectUtil.getMethod(Student.class, "getTransMap").invoke(this) +
-                    '}';
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return "Student{" +
                 "sex=" + sex +
                 ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", schoolId='" + schoolId + '\'' +
                 ", studentType=" + studentType +'\'' +
+                ", transMap = " + this.getTransMap() +
                 '}';
     }
 
