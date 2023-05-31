@@ -6,6 +6,7 @@ import com.fhs.trans.aop.TransMethodResultAop;
 import com.fhs.trans.service.impl.TransService;
 import com.shiji.transi18n.model.Student;
 import com.shiji.transi18n.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class StudentController {
 
 
@@ -48,7 +50,9 @@ public class StudentController {
     @GetMapping("/one/{id}")
     public Student one(@PathVariable("id")Integer id){
         Student student = studentService.one(id);
+        log.info("【one】1.----> {}",student);
         transService.transOne(student);
+        log.info("【one】2.----> {}",student);
         return student;
     }
 
@@ -61,6 +65,7 @@ public class StudentController {
     @GetMapping("/two/{id}")
     public Student two(@PathVariable("id")Integer id){
         Student student = studentService.one(id);
+        log.info("【two】1.----> {}",student);
         return student;
     }
 }

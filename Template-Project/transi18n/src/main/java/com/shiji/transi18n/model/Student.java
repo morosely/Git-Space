@@ -1,18 +1,17 @@
 package com.shiji.transi18n.model;
 
+import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fhs.core.trans.anno.Trans;
 import com.fhs.core.trans.constant.TransType;
 import com.fhs.core.trans.vo.TransPojo;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(callSuper = true)
 //实现TransPojo  接口，代表这个类需要被翻译或者被当作翻译的数据源
 public class Student implements TransPojo {
     // 字典翻译 ref为非必填
@@ -44,4 +43,28 @@ public class Student implements TransPojo {
             this.desc = desc;
         }
     }
+
+    @Override
+    public String toString() {
+        try{
+            return "Student{" +
+                    "sex=" + sex +
+                    ", id='" + id + '\'' +
+                    ", name='" + name + '\'' +
+                    ", schoolId='" + schoolId + '\'' +
+                    ", studentType=" + studentType +'\'' +
+                    ", transMap = " + ReflectUtil.getMethod(Student.class, "getTransMap").invoke(this) +
+                    '}';
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "Student{" +
+                "sex=" + sex +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", schoolId='" + schoolId + '\'' +
+                ", studentType=" + studentType +'\'' +
+                '}';
+    }
+
 }
