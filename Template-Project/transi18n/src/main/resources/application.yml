@@ -10,7 +10,16 @@ easy-trans:
   # ruoyi相关的请开启
   is-enable-map-result: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+
 spring:
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: true
   application:
     name: trans-i18n
   datasource:

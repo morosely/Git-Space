@@ -17,7 +17,8 @@ public class School implements TransPojo {
     private String schoolName;
 
     @TableField("remark")
-    private String schoolRemark;
+    //private String schoolRemark;
+    private String remark;
 
     @TableField("address")
     private String address;

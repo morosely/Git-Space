@@ -18,7 +18,25 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<fhs.release.version>2.1.16</fhs.release.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>2021.0.3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.fhs-opensource</groupId>
 			<artifactId>easy-trans-spring-boot-starter</artifactId>

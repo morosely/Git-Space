@@ -23,11 +23,11 @@ public class Student implements TransPojo {
     private String name;
 
     //SIMPLE 翻译，用于关联其他的表进行翻译  schoolName 为 School 的一个字段
-    @Trans(type = TransType.SIMPLE,target = School.class,fields = "schoolName")
+    @Trans(type = TransType.SIMPLE,target = School.class,fields = "address")
     private String schoolId;
 
     //远程翻译，调用其他微服务的数据源进行翻译
-//    @Trans(type = TransType.RPC,targetClassName = "com.shiji.transi18n.model.School",fields = "schoolName",serviceName = "trans-i18n",alias = "middle")
+//    @Trans(type = TransType.RPC,targetClassName = "com.shiji.transi18n.model.School",fields = "schoolName",serviceName = "TRANS-I18N",alias = "myMiddle")
 //    private String schoolId;
 
     //枚举翻译，返回文科还是理科给前端
