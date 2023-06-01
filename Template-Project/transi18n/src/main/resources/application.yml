@@ -19,7 +19,7 @@ spring:
   cloud:
     service-registry:
       auto-registration:
-        enabled: true
+        enabled: false
   application:
     name: trans-i18n
   datasource:
