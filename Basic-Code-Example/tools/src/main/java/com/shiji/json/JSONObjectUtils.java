@@ -10,25 +10,28 @@ import java.util.*;
 public class JSONObjectUtils {
 
     public static void main(String[] args) {
-        String json = "{'goodsName':'小米','enSanme':'XIAOMI','del':'ABC'}";
-        String jsonArr = "[{ \"goodsCode\":{ \"goods\":\"goodsName\"}},{\"shopCode\":{ \"shop\":\"shopName\"}}]";
+        String json = "{'data':[{'goodsName':'小米','enSanme':'XIAOMI','isNew':true,'salePrice':'1999'}," +
+                "{'goodsName':'华为','enSanme':'华为','isNew':false,'salePrice':'3999'}]}";
         Map replaceKeyMap = new HashMap();
         replaceKeyMap.put("goodsName","del");
         replaceKeyMap.put("enSanme","goodsName");
 
         Map replaceValueMap = new HashMap();
-//        Map valueMap = new HashMap();
-//        valueMap.put("10086","Y");
-//        valueMap.put("10010","N");
-//        replaceValueMap.put("code",valueMap);
+        Map valueMap = new HashMap();
+        valueMap.put("true","Y");
+        valueMap.put("false","N");
+        replaceValueMap.put("isNew",valueMap);
 
         Map addNewMap = new HashMap();
-//        Map newMap = new HashMap();
-//        newMap.put("status","1");
-//        addNewMap.put("brandCode",newMap);
+        Map newMap = new HashMap();
+        newMap.put("status","1");
+        addNewMap.put("salePrice",newMap);
 
-
-        System.out.println(replaceJSON(jsonArr,replaceKeyMap,replaceValueMap,addNewMap));
+        System.out.println("原始："+json);
+        System.out.println("删除、替换key： "+replaceJSONKey(json,replaceKeyMap));
+        System.out.println("替换value： "+replaceJSONValue(json,replaceValueMap));
+        System.out.println("新增JSON： "+addNewJSON(json,addNewMap));
+        System.out.println("综合应用："+replaceJSON(json,replaceKeyMap,replaceValueMap,addNewMap));
     }
 
     /**
@@ -121,7 +124,7 @@ public class JSONObjectUtils {
                     //替換值
                     if(replaceValueMap.containsKey(resKey)){
                         Map valueMap =  replaceValueMap.get(resKey);
-                        map.put(resKey,valueMap.get(value) != null ? valueMap.get(value) : value);
+                        map.put(resKey,valueMap.get(value.toString()) != null ? valueMap.get(value.toString()) : value);
                     }else{
                         map.put(resKey,value);
                     }
@@ -129,7 +132,6 @@ public class JSONObjectUtils {
                     if(addNewMap.containsKey(resKey)){
                         map.putAll(addNewMap.get(resKey));
                     }
-
                 }
             }
         }
