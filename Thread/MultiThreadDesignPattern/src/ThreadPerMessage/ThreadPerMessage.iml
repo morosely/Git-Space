@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/A7-2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-4a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-4b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-5a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-5b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-5c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-5d" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-6a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-6b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-7a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-7b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A7-8" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q7-3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q7-5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q7-6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q7-7" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q7-8" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sample" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSample7" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

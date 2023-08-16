@@ -1,0 +1,72 @@
+###################  项目启动端口  ###################
+logback:
+  file:
+    #日志存放路径
+    dir: c:/logs/easy_trans_test/
+easy-trans:
+  autotrans:
+    package: com.fhs.test.service.**;com.fhs.test.mapper.**;com.fhs.test.dao.**
+  is-enable-redis: true
+  is-enable-global: true
+  is-enable-tile: true
+  dict-use-redis: true #字典缓存放到redis
+  is-enable-map-result: true
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.0.213:8848/
+
+  application:
+    name: easyTrans
+  jpa:
+    #这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的
+    database-platform: org.hibernate.dialect.MySQLDialect
+    #配置在日志中打印出执行的 SQL 语句信息。
+    show-sql: true
+    hibernate:
+      #配置指明在程序启动的时候要删除并且创建实体类对应的表
+      ddl-auto: none
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    initialSize: 1
+    maxActive: 20
+    maxOpenPreparedStatements: 20
+    maxWait: 60000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 1
+    name: basics
+    poolPreparedStatements: true
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: trueserver
+    timeBetweenEvictionRunsMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.0.213:3306/easy_trans_demo?useUnicode=true&useSSL=false&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    validationQuery: select 'x'
+  redis:
+    host: 192.168.0.213
+    port: 6379
+    password: 123456
+    database: 3
+    timeout: 6000
+# 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath*:mapper/*/*.xml
+  type-aliases-package: com.fhs.test.pojo;
+logging:
+  level:
+    com.fhs: debug
+#mybatis-plus:
+ # mapper-locations: classpath*:mapper/*/*.xml
+  # type-aliases-package: com.fhs.test.pojo;
+beetlsql:
+  sqlManagers: sqlManager1
+  sqlManager1:
+    ds: dataSource
+    basePackage: org.beetl.sql.springboot.simple
+    daoSuffix: Dao
+

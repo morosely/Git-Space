@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/A1-1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-6a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-6b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-7a" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-7b" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/A1-7c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q1-4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q1-5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q1-6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Q1-7" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sample1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sample2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jucSemaphore" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
