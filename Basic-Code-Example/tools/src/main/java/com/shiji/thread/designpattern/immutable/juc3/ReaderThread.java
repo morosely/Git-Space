@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.immutable.sample3;
+package com.shiji.thread.designpattern.immutable.juc3;
 
 import java.util.List;
 
