@@ -18,7 +18,7 @@ public class TwoPhaseTerminationInterrupt {
                     break;
                 }
                 try {
-                    log.debug("将结果保存" + +current.getId() + " " + current.getName());
+                    log.debug("将结果保存: " + +current.getId() + " " + current.getName());
                     Thread.sleep(10000);
                     log.debug("程序正在监控中......");
                 } catch (InterruptedException e) {

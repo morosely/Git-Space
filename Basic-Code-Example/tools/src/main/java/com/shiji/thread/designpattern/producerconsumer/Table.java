@@ -2,11 +2,11 @@ package com.shiji.thread.designpattern.producerconsumer;
 
 public class Table {
     private final String[] buffer;
-    private int tail;  // 下次put的位置
-    private int head;  // 下次take的位置
+    private int tail;  // 下一次放置（put）的位置
+    private int head;  // 下一次取（take）的位置
     private int count; // buffer中的蛋糕个数
-    public Table(int count) {
-        this.buffer = new String[count];
+    public Table(int size) {
+        this.buffer = new String[size];
         this.head = 0;
         this.tail = 0;
         this.count = 0;
