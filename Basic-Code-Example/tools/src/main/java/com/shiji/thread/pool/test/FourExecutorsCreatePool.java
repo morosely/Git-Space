@@ -15,11 +15,11 @@ public class FourExecutorsCreatePool {
     public static void main(String[] args) throws Exception {
         //newFixed();
         //newSingle();
-        //synchronousQueue();
+        synchronousQueue();
         //timer();
         //newScheduled();
         //newScheduleAtFixedRate();
-        newScheduleWithFixedDelay();
+        //newScheduleWithFixedDelay();
     }
 
     /**
@@ -89,6 +89,9 @@ public class FourExecutorsCreatePool {
                 log.debug("putting...{} ", 2);
                 integers.put(2);
                 log.debug("putted{} ...", 2);
+//                log.debug("putting...{} ", 3);
+//                integers.put(3);
+//                log.debug("putted{} ...", 3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

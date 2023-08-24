@@ -23,15 +23,16 @@ public class ProducerThread extends Thread {
                 // 向缓冲区填充字符
                 for (int i = 0; i < buffer.length; i++) {
                     buffer[i] = nextChar();
-                    System.out.println(Thread.currentThread().getName() + ": " + buffer[i] + " -> ");
+                    System.out.println(Thread.currentThread().getName() + " ====================> : " + buffer[i]);
                 }
 
                 // 交换缓冲区
-                System.out.println(Thread.currentThread().getName() + ": BEFORE exchange");
+                System.out.println(Thread.currentThread().getName() + " ====================> : BEFORE exchange");
                 buffer = exchanger.exchange(buffer);
-                System.out.println(Thread.currentThread().getName() + ": AFTER exchange");
+                System.out.println(Thread.currentThread().getName() + " ====================> : AFTER exchange");
             }
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
