@@ -21,6 +21,7 @@ public class MakerClientThread extends Thread {
                 System.out.println(Thread.currentThread().getName() + ": value = " + value);
             }
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
