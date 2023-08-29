@@ -10,7 +10,7 @@ public class ThreadLocalTest {
 
         //创建第一个线程
         Thread threadA = new Thread(()->{
-            threadLocal.set("ThreadA【" + Thread.currentThread().getName()+"】");
+            //threadLocal.set("ThreadA【" + Thread.currentThread().getName()+"】");
             System.out.println("线程A本地变量中的值为 ===》" + threadLocal.get());
         });
         //创建第二个线程
