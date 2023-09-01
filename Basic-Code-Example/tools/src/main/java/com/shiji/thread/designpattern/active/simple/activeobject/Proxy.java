@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.active.activeobject;
+package com.shiji.thread.designpattern.active.simple.activeobject;
 
 class Proxy implements ActiveObject {
     private final SchedulerThread scheduler;

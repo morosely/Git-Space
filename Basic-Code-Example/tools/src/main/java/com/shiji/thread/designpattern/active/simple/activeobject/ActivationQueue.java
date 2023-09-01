@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.active.activeobject;
+package com.shiji.thread.designpattern.active.simple.activeobject;
 
 class ActivationQueue {
     private static final int MAX_METHOD_REQUEST = 100;

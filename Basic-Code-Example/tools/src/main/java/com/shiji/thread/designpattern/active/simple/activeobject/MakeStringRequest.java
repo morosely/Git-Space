@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.active.activeobject;
+package com.shiji.thread.designpattern.active.simple.activeobject;
 
 class MakeStringRequest extends MethodRequest<String> {
     private final int count;

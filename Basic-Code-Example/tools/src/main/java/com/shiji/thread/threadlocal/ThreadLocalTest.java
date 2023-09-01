@@ -12,12 +12,12 @@ public class ThreadLocalTest {
         Thread threadA = new Thread(()->{
             //threadLocal.set("ThreadA【" + Thread.currentThread().getName()+"】");
             System.out.println("线程A本地变量中的值为 ===》" + threadLocal.get());
-        });
+        },"A");
         //创建第二个线程
         Thread threadB = new Thread(()->{
-            //threadLocal.set("ThreadB【" + Thread.currentThread().getName()+"】");
+            threadLocal.set("ThreadB【" + Thread.currentThread().getName()+"】");
             System.out.println("线程B本地变量中的值为 ===》" + threadLocal.get());
-        });
+        },"B");
 
         //启动线程A和线程B
         threadA.start();

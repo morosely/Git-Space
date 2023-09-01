@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.active.activeobject;
+package com.shiji.thread.designpattern.active.simple.activeobject;
 
 class DisplayStringRequest extends MethodRequest<Object> {
     private final String string;

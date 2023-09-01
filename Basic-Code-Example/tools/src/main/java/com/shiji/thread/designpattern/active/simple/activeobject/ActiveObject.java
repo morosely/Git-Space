@@ -1,4 +1,4 @@
-package com.shiji.thread.designpattern.active.activeobject;
+package com.shiji.thread.designpattern.active.simple.activeobject;
 
 public interface ActiveObject {
     public abstract Result<String> makeString(int count, char fillchar);
