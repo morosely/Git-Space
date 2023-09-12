@@ -8,6 +8,7 @@ class Servant implements ActiveObject {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         return new RealResult<String>(new String(buffer));
@@ -17,6 +18,7 @@ class Servant implements ActiveObject {
             System.out.println("displayString: " + string);
             Thread.sleep(10);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

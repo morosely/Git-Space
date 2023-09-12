@@ -25,6 +25,7 @@ class ActiveObjectImpl implements ActiveObject {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
                 return new String(buffer);
@@ -43,6 +44,7 @@ class ActiveObjectImpl implements ActiveObject {
                     System.out.println("displayString: " + string);
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

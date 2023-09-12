@@ -12,6 +12,7 @@ public class Main {
             new DisplayClientThread("Chris", activeObject).start();
             Thread.sleep(5000);
         } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             System.out.println("*** shutdown ***");
             activeObject.shutdown();

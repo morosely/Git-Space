@@ -18,6 +18,7 @@ class ActivationQueue {
             try {
                 wait();
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         requestQueue[tail] = request;
@@ -30,6 +31,7 @@ class ActivationQueue {
             try {
                 wait();
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         MethodRequest request = requestQueue[head];

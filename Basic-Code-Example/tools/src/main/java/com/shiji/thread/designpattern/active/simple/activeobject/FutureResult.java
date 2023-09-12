@@ -13,6 +13,7 @@ class FutureResult<T> extends Result<T> {
             try {
                 wait();
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         return result.getResultValue();
