@@ -2,7 +2,6 @@ package com.shiji.java8.compare;
 
 import java.util.Comparator;
 import java.util.TreeSet;
-import java.util.function.BinaryOperator;
 
 public class MyComparator {
 

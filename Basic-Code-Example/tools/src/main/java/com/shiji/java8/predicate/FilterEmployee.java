@@ -67,7 +67,7 @@ public class FilterEmployee {
 
         System.out.println("5.=============（Lambda Stream API）=================");
         employees.stream().filter((e) -> e.getSalary() >= 5000).forEach(System.out::println);
-        System.out.println("5.=============（Lambda Stream API）获取前两个员工的信息=================");
+        System.out.println("6.=============（Lambda Stream API）只获取两个员工信息=================");
         employees.stream().filter((e) -> e.getSalary() >= 5000).limit(2).forEach(System.out::println);
 
     }
