@@ -1,0 +1,8 @@
+com\shiji\multi\config\DataSourceConfiguration.class
+com\shiji\multi\secondary\entity\Goods.class
+com\shiji\multi\config\SecondaryConfig.class
+com\shiji\multi\primary\mapper\SaleGoodsMapper.class
+com\shiji\multi\secondary\mapper\GoodsMapper.class
+com\shiji\multi\primary\entity\SaleGoods.class
+com\shiji\multi\ShiJiMultiDataSourceApplication.class
+com\shiji\multi\config\PrimaryConfig.class
