@@ -42,6 +42,7 @@ public class UserServiceImplTest extends MultiDatasourceMybatisApplicationTests 
     @Test
     public void testListUser() {
         List<User> list = userService.list(new QueryWrapper<>());
-        log.info("【list】= {}", JSONUtil.toJsonStr(list));
+        log.info("【list】==========>>> {}", JSONUtil.toJsonStr(list));
+
     }
 }
