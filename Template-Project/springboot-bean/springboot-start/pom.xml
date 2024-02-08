@@ -28,7 +28,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.haitao</groupId>
+			<groupId>com.yihaitao</groupId>
 			<artifactId>springboot-model</artifactId>
 			<version>1.0</version>
 		</dependency>

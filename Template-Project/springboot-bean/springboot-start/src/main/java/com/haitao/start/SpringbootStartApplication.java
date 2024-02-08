@@ -1,14 +1,10 @@
 package com.haitao.start;
 
 import com.haitao.anno.EnableCommonConfig;
-import com.haitao.config.CommonConfig;
-import com.haitao.config.CommonImportSelector;
-import com.haitao.model.GoodsModel;
+import com.yiihaitao.model.GoodsModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = "com.haitao.config")

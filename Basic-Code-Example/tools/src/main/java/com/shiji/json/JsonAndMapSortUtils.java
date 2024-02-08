@@ -2,7 +2,7 @@ package com.shiji.json;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import sun.misc.ASCIICaseInsensitiveComparator;
+//import sun.misc.ASCIICaseInsensitiveComparator;
 
 import java.util.*;
 
@@ -102,13 +102,13 @@ public class JsonAndMapSortUtils {
     public static void main(String[] args) {
         Map<String,String> map = JsonAndMapSortUtils.getMapData();
         JSONArray jsonArray = JsonAndMapSortUtils.getJsonArrayData();
-        List afterSortMap = JsonAndMapSortUtils.mapByKeyToSort(map,new ASCIICaseInsensitiveComparator());
+        //List afterSortMap = JsonAndMapSortUtils.mapByKeyToSort(map,new ASCIICaseInsensitiveComparator());
 
         JSONArray afterSortJsonArray_isAsc = JsonAndMapSortUtils.jsonArrayToSort(jsonArray,"userId",true);
         JSONArray afterSortJsonArray_noAsc = JsonAndMapSortUtils.jsonArrayToSort(jsonArray,"userId",false);
 
-        System.out.println("map排序前："+map);
-        System.out.println("map排序后："+afterSortMap+"\n");
+        //System.out.println("map排序前："+map);
+        //System.out.println("map排序后："+afterSortMap+"\n");
 
         System.out.println("JsonArray排序前："+jsonArray);
         System.out.println("JsonArray排序后==》升序："+afterSortJsonArray_isAsc);

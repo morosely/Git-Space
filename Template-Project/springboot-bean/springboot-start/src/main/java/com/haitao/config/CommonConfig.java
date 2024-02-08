@@ -1,14 +1,12 @@
 package com.haitao.config;
 
-import com.haitao.model.GoodsModel;
-import com.haitao.model.ShopModel;
+import com.yiihaitao.model.GoodsModel;
+import com.yiihaitao.model.ShopModel;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
-import java.math.BigDecimal;
 
 @Configuration
 public class CommonConfig {

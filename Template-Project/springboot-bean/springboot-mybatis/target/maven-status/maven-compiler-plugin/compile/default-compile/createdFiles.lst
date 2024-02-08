@@ -1,6 +1,0 @@
-com\itheima\springbootmybatis\mapper\UserMapper.class
-com\itheima\springbootmybatis\pojo\User.class
-com\itheima\springbootmybatis\service\UserService.class
-com\itheima\controller\UserController.class
-com\itheima\springbootmybatis\service\impl\UserServiceImpl.class
-com\itheima\springbootmybatis\SpringbootMybatisApplication.class

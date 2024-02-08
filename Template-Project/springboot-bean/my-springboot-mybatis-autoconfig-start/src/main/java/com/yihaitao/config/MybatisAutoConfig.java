@@ -29,6 +29,7 @@ public class MybatisAutoConfig {
         //扫描的包：启动类所在的包以子包
         List<String> packages = AutoConfigurationPackages.get(beanFactory);
         String startPackage = packages.get(0);
+        System.out.println("startPackage ==================================================》》》》》 " + startPackage);
         mapperScannerConfigurer.setBasePackage(startPackage);
         //扫描的注解
         mapperScannerConfigurer.setAnnotationClass(Mapper.class);
