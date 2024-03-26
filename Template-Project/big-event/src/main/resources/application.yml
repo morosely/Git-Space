@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.13.81:3306/big_event?useSSL=false
+    username: root
+    password: 123456
+  data:
+    redis:
+      host: 172.17.13.81
+      port: 6379
+      password: 123456
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名和下划线命名的自动转换
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8080
+
+file:
+  upload-folder: D:/images/
