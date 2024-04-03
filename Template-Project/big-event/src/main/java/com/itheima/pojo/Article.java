@@ -18,7 +18,7 @@ public class Article {
     @NotEmpty
     private String content;//文章内容
     @NotEmpty
-    @URL
+    //@URL
     private String coverImg;//封面图像
 
     @State
