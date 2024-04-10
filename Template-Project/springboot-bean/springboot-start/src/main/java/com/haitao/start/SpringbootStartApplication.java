@@ -1,7 +1,7 @@
 package com.haitao.start;
 
 import com.haitao.anno.EnableCommonConfig;
-import com.yiihaitao.model.GoodsModel;
+import com.yihaitao.model.GoodsModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

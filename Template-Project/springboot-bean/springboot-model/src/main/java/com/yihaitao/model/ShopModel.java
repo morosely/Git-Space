@@ -1,4 +1,4 @@
-package com.yiihaitao.model;
+package com.yihaitao.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,2 +1,3 @@
-com\yiihaitao\model\GoodsModel.class
-com\yiihaitao\model\ShopModel.class
+com\yihaitao\model\Country.class
+com\yihaitao\model\ShopModel.class
+com\yihaitao\model\GoodsModel.class

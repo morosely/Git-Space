@@ -1,7 +1,7 @@
 package com.haitao.config;
 
-import com.yiihaitao.model.GoodsModel;
-import com.yiihaitao.model.ShopModel;
+import com.yihaitao.model.GoodsModel;
+import com.yihaitao.model.ShopModel;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +33,6 @@ public class CommonConfig {
     //当前环境存在指定的这个类DispatcherServlet时，才声明该bean(ShopModel):当引入web起步依耐，则环境中有DispatcherServlet类，注入ShopModel。否则不注入ShopModel类
     @ConditionalOnClass(name="org.springframework.web.servlet.DispatcherServlet")
     public ShopModel shop(){
-        return new ShopModel();
+        return new ShopModel(1l,"001","螃蟹岬店");
     }
 }
