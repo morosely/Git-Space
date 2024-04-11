@@ -26,7 +26,7 @@ public class MyApplicationContextInitializer implements ApplicationContextInitia
         MutablePropertySources propertySources = environment.getPropertySources();
 
         //3.注册
-        System.out.println("==========> 【注册 configMap】 "+configMap);
+        System.out.println("==========> 【MyApplicationContextInitializer】【注册 configMap】 "+configMap);
         propertySources.addLast(new MapPropertySource("configMap",configMap));
 
         //4.测试容器启动失败

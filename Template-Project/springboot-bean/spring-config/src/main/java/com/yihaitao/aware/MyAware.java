@@ -12,18 +12,18 @@ public class MyAware implements BeanNameAware, BeanClassLoaderAware, BeanFactory
     //BeanClassLoader的回调方法
     @Override
     public void setBeanClassLoader(ClassLoader classLoader) {
-        System.out.println("MyAware...setBeanClassLoader..."+classLoader);
+        System.out.println("【MyAware】...setBeanClassLoader..."+classLoader);
     }
 
     //BeanFactoryAware的回调方法
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("MyAware...setBeanFactory..."+beanFactory);
+        System.out.println("【MyAware】...setBeanFactory..."+beanFactory);
     }
 
     //BeanNameAware的回调方法
     @Override
     public void setBeanName(String name) {
-        System.out.println("MyAware...setBeanName..."+name);
+        System.out.println("【MyAware】...setBeanName..."+name);
     }
 }

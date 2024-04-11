@@ -48,19 +48,32 @@ public class SpringConfigApplication {
     }
 
 }
-/**
- * ApplicationContextInitializer
- * 1. 自定义类,实现ApplicationContextInitializer接口
- * 2. 在META-INF/spring.factories配置文件中配置自定义的类
- *
+/* ApplicationContextInitializer
+ * SpringBoot框架在设计之初,为了有更好的兼容性,在不同的运行阶段,提供了非常多的扩展点, 可以让程序员根据自己的需求, 在整个Spring应用程序运行过程中执行程序员自定义的代码
+ * IOC容器对象创建完成后执行,可以对上下文环境做一些操作, 例如运行环境属性注册等
+ * 1.ApplicationContextInitializer如何使用?
+ *  自定义类,实现ApplicationContextInitializer接口
+ *  在META-INF/spring.factories配置文件中配置自定义的类
+ * 2.initialize方法什么时候执行?
+ * IOC容器对象创建完成后执行, 常用于环境属性注册
+
  * ApplicationListener
- * 1. 自定义类,实现ApplicationListener接口
- * 2. 在META-INF/spring.factories配置文件中配置自定义的类
- *
+ * 监听容器发布的事件, 允许程序员执行自己的代码,完成事件驱动开发, 它可以监听容器初始化完成、初始化失败等事件. 通常情况下可以使用监听器加载资源,开启定时任务等
+ * 1.ApplicationListener如何使用?
+ *  自定义类,实现ApplicationListener接口
+ *  META-INF/spring.factories配置文件中配置自定义的类
+ * 2.onApplicationEvent方法什么时候执行?
+ *  IOC容器发布事件之后执行, 通常用于资源加载, 定时任务发布等
+
  * BeanFactory
- * 1.Bean容器的根接口, 提供Bean对象的创建、配置、依赖注入等功能
- * 2.AnnotationConfigServletWebServerApplicationContext  DefaultListableBeanFactory
- *
+ * Bean容器的根接口, 提供Bean对象的创建、配置、依赖注入等功能
+ * 1.BeanFactory的作用?
+ *  Bean容器的根接口, 提供Bean对象的创建、配置、依赖注入等功能
+ *  AnnotationConfigServletWebServerApplicationContext  DefaultListableBeanFactory
+ * 2.BeanFactory常见的两个实现?
+ *  ApplicationConfigServletWebServerApplicationContext
+ *  DefaultListableBeanFactory
+
  * BeanDefinition
  * 用于描述Bean，包括Bean的名称，Bean的属性，Bean的行为，实现的接口，添加的注解等等，Spring中，Bean在创
  * 建之前，都需要封装成对应的BeanDefinition，然后根据BeanDefinition进一步创建Bean对象
@@ -69,7 +82,7 @@ public class SpringConfigApplication {
  * Bean工厂后置处理器，当BeanFactory准备好了后(Bean初始化之前)，会调用该接口的postProcessBeanFactory方法，
  * 经常用于新增BeanDefinition
  * ConfigurationClassPostProcessor 扫描启动类所在包下的注解
- * ServltComponentRegisteringPostProcessor  扫描@WebServlet、@WebFilter、@WebListener
+ * ServletComponentRegisteringPostProcessor  扫描@WebServlet、@WebFilter、@WebListener
  * CachingMetadataReaderFactoryPostProcessor 配置ConfigurationClassPostProcessor
  * ConfigurationWarningsPostProcessor 配置警告提示
  *
