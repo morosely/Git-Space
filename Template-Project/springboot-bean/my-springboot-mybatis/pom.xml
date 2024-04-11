@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.haitao</groupId>
@@ -25,16 +25,16 @@
         </dependency>
 
         <!--mybatis的起步依赖-->
-        <!--<dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
-        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--            <version>3.0.3</version>-->
+<!--        </dependency>-->
 
         <!--自定义的mybatis起步依赖-->
         <dependency>
             <groupId>com.yihaitao</groupId>
-            <artifactId>my-springboot-mybatis-autoconfig-start</artifactId>
+            <artifactId>my-springboot-mybatis-start</artifactId>
             <version>1.0</version>
         </dependency>
 
