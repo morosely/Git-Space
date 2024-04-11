@@ -32,12 +32,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--自定义的Jedis起步依赖-->
-        <dependency>
-            <groupId>com.yihaitao</groupId>
-            <artifactId>my-srpingboot-redis-start</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
     <build>

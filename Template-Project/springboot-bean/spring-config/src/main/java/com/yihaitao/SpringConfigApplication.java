@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import redis.clients.jedis.Jedis;
 
 @SpringBootApplication
 public class SpringConfigApplication {
@@ -33,8 +32,6 @@ public class SpringConfigApplication {
 
         System.out.println("==========> Teacher : "+context.getBean("teacher"));
 
-
-        System.out.println("Jedis ===============>>>>> " + beanExists(context, Jedis.class));
     }
 
     public static boolean beanExists(ApplicationContext context, String beanName) {
