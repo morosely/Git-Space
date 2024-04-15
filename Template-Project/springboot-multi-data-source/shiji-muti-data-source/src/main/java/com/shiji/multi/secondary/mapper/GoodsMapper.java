@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.List;
-@Qualifier("secondaryGoodsMapper")
+//@Qualifier("secondaryGoodsMapper")
 public interface GoodsMapper {
 
     @Select("select * from goods where goodsName = #{goodsName}")
