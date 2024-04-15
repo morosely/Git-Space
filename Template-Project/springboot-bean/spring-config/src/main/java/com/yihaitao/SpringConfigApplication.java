@@ -29,7 +29,6 @@ public class SpringConfigApplication {
         BeanDefinition myControllerBdf = beanFactory.getBeanDefinition("myController");
         System.out.println("==========> @Bean : " + messageBdf.getClass());
         System.out.println("==========> @Component : " + myControllerBdf.getClass());
-
         System.out.println("==========> Teacher : "+context.getBean("teacher"));
 
     }
