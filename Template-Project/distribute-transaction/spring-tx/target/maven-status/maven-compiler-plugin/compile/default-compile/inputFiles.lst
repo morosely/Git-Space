@@ -1,8 +1,0 @@
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\config\MainConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\service\OrderService.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\service\ProductService.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\entity\Order.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\dao\OrderDao.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\entity\Product.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\dao\ProductDao.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\spring-tx\src\main\java\io\transaction\spring\Main.java

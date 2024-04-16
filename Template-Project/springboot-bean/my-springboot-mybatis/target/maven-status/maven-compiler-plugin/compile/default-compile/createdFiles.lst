@@ -1,6 +1,0 @@
-com\haitao\mapper\UserMapper.class
-com\haitao\service\impl\UserServiceImpl.class
-com\haitao\service\UserService.class
-com\haitao\controller\UserController.class
-com\haitao\pojo\User.class
-com\haitao\MySpringbootMybatisApplication.class

@@ -1,7 +1,0 @@
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\config\CorsConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\service\UserAccountBank01Service.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\controller\TransferController.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\service\impl\UserAccountBank01ServiceImpl.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\config\MybatisPlusConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\TccBank01Starter.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-tcc\tx-tcc-bank01\src\main\java\io\transaction\tcc\bank01\config\WebMvcConfig.java

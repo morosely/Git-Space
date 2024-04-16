@@ -1,8 +1,0 @@
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\config\SecondaryConfig.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\secondary\entity\Goods.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\secondary\mapper\GoodsMapper.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\primary\mapper\SaleGoodsMapper.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\primary\entity\SaleGoods.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\config\PrimaryConfig.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\ShiJiMultiDataSourceApplication.java
-D:\Workspace\MyCode\Git-Space\Template-Project\springboot-multi-data-source\shiji-muti-data-source\src\main\java\com\shiji\multi\config\DataSourceConfiguration.java

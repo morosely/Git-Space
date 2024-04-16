@@ -1,9 +1,0 @@
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\PayServerStarter.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\entity\PayInfo.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\config\WebMvcConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\config\CorsConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\mapper\PayInfoMapper.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\service\PayInfoService.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\config\MybatisPlusConfig.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\controller\PayInfoController.java
-D:\WorkSpaces\AeonDX\distribute-transaction-master\tx-notifymsg\tx-notifymsg-pay\src\main\java\io\transaction\notifymsg\pay\service\impl\PayInfoServiceImpl.java

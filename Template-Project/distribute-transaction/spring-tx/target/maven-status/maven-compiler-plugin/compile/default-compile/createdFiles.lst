@@ -1,8 +1,0 @@
-io\transaction\spring\dao\OrderDao.class
-io\transaction\spring\dao\ProductDao.class
-io\transaction\spring\config\MainConfig.class
-io\transaction\spring\Main.class
-io\transaction\spring\service\OrderService.class
-io\transaction\spring\entity\Product.class
-io\transaction\spring\service\ProductService.class
-io\transaction\spring\entity\Order.class

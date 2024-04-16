@@ -1,6 +1,0 @@
-com\efuture\springboot\rocketmq\SpringProducer.class
-com\efuture\springboot\BootApplication.class
-com\efuture\springboot\transaction\SpringTransactionProducer.class
-com\efuture\springboot\rocketmq\SpringConsumer.class
-com\efuture\springboot\transaction\SpringLocalTransactionListener.class
-com\efuture\springboot\transaction\SpringTranscationConsumer.class

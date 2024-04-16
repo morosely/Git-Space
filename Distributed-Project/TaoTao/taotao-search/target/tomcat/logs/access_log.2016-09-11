@@ -1,2 +1,0 @@
-127.0.0.1 - - [11/Sep/2016:11:12:53 +0800] "GET /search.html?q=tcl HTTP/1.0" 200 42307 http-bio-8085-exec-1 1246
-127.0.0.1 - - [11/Sep/2016:11:12:54 +0800] "GET /favicon.ico HTTP/1.0" 404 973 http-bio-8085-exec-2 0
