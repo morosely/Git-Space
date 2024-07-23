@@ -7,14 +7,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		long startTime = System.currentTimeMillis();
-		Master master = new Master(new PlusWorker(), 10);
-		for (int i = 0; i < 20; i++) {
-			master.submit(i);
+		Master master = new Master(new PlusWorker(), 3);
+		for (int i = 0; i < 10; i++) {
+			master.submit(i);//提交任务
 		}
-		master.execute();
+		master.execute();//处理任务
 		long result = 0;
-		Map<String,Object> resultMap = master.getResultMap();
-		while(resultMap.size()>0 || !master.isCompleted()){
+		Map<String,Object> resultMap = master.getResultMap();//获取任务结果
+		while(!resultMap.isEmpty() || !master.isCompleted()){
 			Set<String> keys = resultMap.keySet();
 			String key = null;
 			for(String k : keys){
@@ -31,6 +31,6 @@ public class Main {
 				resultMap.remove(key);//移除被计算过的项
 		}
 		long endTime = System.currentTimeMillis();
-		System.out.println(result +" ----- "+(endTime - startTime));
+		System.out.println("【cost time:"+(endTime - startTime)+"】 result = " + result);
 	}
 }
