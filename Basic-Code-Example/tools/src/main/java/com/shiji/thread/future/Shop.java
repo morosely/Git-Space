@@ -52,12 +52,12 @@ public class Shop {
         return CompletableFuture.supplyAsync(() -> getPrice(productName));//进一步精简代码
     }
 
-    //static List<Shop> shops = Arrays.asList(new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"));
-    static List<Shop> shops = Arrays.asList(
-            new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"),
-            new Shop("G"), new Shop("H"), new Shop("I"), new Shop("J"), new Shop("A"), new Shop("B"),
-            new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"), new Shop("G"), new Shop("H"),
-            new Shop("I"), new Shop("J"), new Shop("G"), new Shop("H"), new Shop("I"), new Shop("J"));
+    static List<Shop> shops = Arrays.asList(new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"));
+//    static List<Shop> shops = Arrays.asList(
+//            new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"),
+//            new Shop("G"), new Shop("H"), new Shop("I"), new Shop("J"), new Shop("A"), new Shop("B"),
+//            new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"), new Shop("G"), new Shop("H"),
+//            new Shop("I"), new Shop("J"), new Shop("G"), new Shop("H"), new Shop("I"), new Shop("J"));
 
     public static List<String> findPrice_01(String productName) {//Stream-阻塞式
         return shops.stream()
@@ -122,21 +122,21 @@ public class Shop {
 //        System.out.println("==========>>> 流-阻塞式 用时 " + (System.nanoTime() - start1) / 1000000 + " ms");//线性执行，24*一个任务的时间
 
         long start2 = System.nanoTime();
-        System.out.println(findPrice_02("VIVO-IQOO-5G"));
+        System.out.println(findPrice_02("ABC"));
         System.out.println("==========>>> 并行流-阻塞式 用时 " + (System.nanoTime() - start2) / 1000000 + " ms");//6倍的提升，并行！
 
         long start3 = System.nanoTime();
-        System.out.println(findPrice_03("VIVO-IQOO-5G"));
+        System.out.println(findPrice_03("ABC"));
         System.out.println("==========>>> 流-非阻塞式1 用时 " + (System.nanoTime() - start3) / 1000000 + " ms");//用时非常短，因为还没有算出来就会返回Future列表
 
         long start4 = System.nanoTime();
-        System.out.println(findPrice_04("VIVO-IQOO-5G"));
+        System.out.println(findPrice_04("ABC"));
         System.out.println("==========>>> 流-非阻塞式2 用时 " + (System.nanoTime() - start4) / 1000000 + " ms");//发现结果和并行流不相上下！
 
         //原因：其内部原理都是使用了相同的线程池，并且核心线程数大小等于当前可用的CPU核心数量；但是——CompletableFuture的优势是这个数量可以自己配置以满足实际需要，而并行流不行！
         long start5 = System.nanoTime();
-        System.out.println(findPrice_05("VIVO-IQOO-5G"));
-        System.out.println("==========>>> 流-非阻塞式2 用时 " + (System.nanoTime() - start5) / 1000000 + " ms");//成倍的提升（4倍，多4倍的核心线程数）-改进的异步CompletableFuture！
+        System.out.println(findPrice_05("ABC"));
+        System.out.println("==========>>> 流-非阻塞式2(自定义线程池) 用时 " + (System.nanoTime() - start5) / 1000000 + " ms");//成倍的提升（4倍，多4倍的核心线程数）-改进的异步CompletableFuture！
 
     }
 }
