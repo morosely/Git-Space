@@ -22,7 +22,8 @@ public class ThreadPoolTest {
             executor.execute(task);
         }
 
-        System.in.read(); //阻塞主线程
+        //System.in.read(); //阻塞主线程
+        executor.shutdown();
         //**结果解释**：8个被执行2个被拒绝，其中，创建了4个线程Thread（最大池数），先执行4个任务，5s后最后一波任务一次性执行4个；
         //**前2个任务直接进入核心池，后来的4个进入阻塞队列，再来了2个（2核心+2=4max）则new新线程去执行，最后俩因为超过max限制了，被reject**；
     }
