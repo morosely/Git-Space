@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopCompletableFuture {
+public class Shop {
 
     String shopName;
 
@@ -52,14 +52,17 @@ public class ShopCompletableFuture {
         return CompletableFuture.supplyAsync(() -> getPrice(productName));//进一步精简代码
     }
 
-    static List<ShopCompletableFuture> shops = Arrays.asList(
-            new ShopCompletableFuture("A"), new ShopCompletableFuture("B"), new ShopCompletableFuture("C"),
-            new ShopCompletableFuture("D"), new ShopCompletableFuture("E"), new ShopCompletableFuture("F"));
-//    static List<ShopCompletableFuture> shops = Arrays.asList(
-//            new ShopCompletableFuture("A"), new ShopCompletableFuture("B"), new ShopCompletableFuture("C"), new ShopCompletableFuture("D"), new ShopCompletableFuture("E"), new ShopCompletableFuture("F"),
-//            new ShopCompletableFuture("G"), new ShopCompletableFuture("H"), new ShopCompletableFuture("I"), new ShopCompletableFuture("J"), new ShopCompletableFuture("A"), new ShopCompletableFuture("B"),
-//            new ShopCompletableFuture("C"), new ShopCompletableFuture("D"), new ShopCompletableFuture("E"), new ShopCompletableFuture("F"), new ShopCompletableFuture("G"), new ShopCompletableFuture("H"),
-//            new ShopCompletableFuture("I"), new ShopCompletableFuture("J"), new ShopCompletableFuture("G"), new ShopCompletableFuture("H"), new ShopCompletableFuture("I"), new ShopCompletableFuture("J"));
+//    static List<Shop> shops = Arrays.asList(
+//            new Shop("A"), new Shop("B"), new Shop("C"),new Shop("D"));
+    static List<Shop> shops = Arrays.asList(
+            new Shop("A"), new Shop("B"), new Shop("C"),
+            new Shop("D"), new Shop("E"), new Shop("F"),
+            new Shop("G"), new Shop("H"), new Shop("I"),
+            new Shop("J"), new Shop("A"), new Shop("B"),
+            new Shop("C"), new Shop("D"), new Shop("E"),
+            new Shop("F"), new Shop("G"), new Shop("H"),
+            new Shop("I"), new Shop("J"), new Shop("G"),
+            new Shop("H"), new Shop("I"), new Shop("J"));
 
     public static List<String> findPrice_01(String productName) {//Stream-阻塞式
         return shops.stream()
@@ -106,39 +109,11 @@ public class ShopCompletableFuture {
         return futures.stream().map(CompletableFuture::join).collect(Collectors.toList());
     }
 
-
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ShopCompletableFuture shop = new ShopCompletableFuture();
-        Future<Double> futurePrice = shop.getPriceAsync_01("ABC");
-        //主线程做其他事情
-        shop.doSomething();
-        try {
-            double price = futurePrice.get();//从Future对象中读取价格，如果价格未知，会发生阻塞
-            System.out.printf("Price is %.2f%n", price);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-//        long start1 = System.nanoTime();
-//        System.out.println(findPrice_01("VIVO-IQOO-5G"));
-//        System.out.println("==========>>> 流-阻塞式 用时 " + (System.nanoTime() - start1) / 1000000 + " ms");//线性执行，24*一个任务的时间
-
-        long start2 = System.nanoTime();
-        System.out.println(findPrice_02("ABC"));
-        System.out.println("==========>>> 并行流-阻塞式 用时 " + (System.nanoTime() - start2) / 1000000 + " ms");//6倍的提升，并行！
-
-        long start3 = System.nanoTime();
-        System.out.println(findPrice_03("ABC"));
-        System.out.println("==========>>> 流-非阻塞式1 用时 " + (System.nanoTime() - start3) / 1000000 + " ms");//用时非常短，因为还没有算出来就会返回Future列表
-
-        long start4 = System.nanoTime();
-        System.out.println(findPrice_04("ABC"));
-        System.out.println("==========>>> 流-非阻塞式2 用时 " + (System.nanoTime() - start4) / 1000000 + " ms");//发现结果和并行流不相上下！
-
-        //原因：其内部原理都是使用了相同的线程池，并且核心线程数大小等于当前可用的CPU核心数量；但是——CompletableFuture的优势是这个数量可以自己配置以满足实际需要，而并行流不行！
-        long start5 = System.nanoTime();
-        System.out.println(findPrice_05("ABC"));
-        System.out.println("==========>>> 流-非阻塞式2(自定义线程池) 用时 " + (System.nanoTime() - start5) / 1000000 + " ms");//成倍的提升（4倍，多4倍的核心线程数）-改进的异步CompletableFuture！
-
-    }
 }
+/*
+ * 并行时使用流还是CompletableFutures？
+ * 对集合进行并行计算有两种方式：要么将其转化为并行流，利用map操作，要么枚举出集合中的每一个元素，创建新的线程，在CompletableFuture内对其进行操作。后者提供了更多的灵活性，你可以调整线程池的大小，而这能帮助你确保整体的计算不会因为线程都在等待I/O而发生阻塞。
+ * 使用这些API的建议：
+ * 如果你进行的是计算密集型的操作，并且没有I/O，那么推荐使用Stream接口，因为实现简单，同时效率也可能是最高的。
+ * 如果并行的工作单元还涉及等待I/O的操作（包括网络连接等待），那么使用CompletableFuture灵活性更好，可以依据等待/计算，或者W/C的比率设定需要使用的线程数。这种情况不使用并行流的另一个原因是，处理流的流水线中如果发生I/O等待，流的延迟特性会让我们很难判断到底什么时候触发了等待。
+ */
