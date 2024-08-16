@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shop {
+public class ShopCompletableFuture {
 
     String shopName;
 
@@ -52,7 +52,7 @@ public class Shop {
         return CompletableFuture.supplyAsync(() -> getPrice(productName));//进一步精简代码
     }
 
-    static List<Shop> shops = Arrays.asList(new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"));
+    static List<ShopCompletableFuture> shops = Arrays.asList(new ShopCompletableFuture("A"), new ShopCompletableFuture("B"), new ShopCompletableFuture("C"), new ShopCompletableFuture("D"), new ShopCompletableFuture("E"), new ShopCompletableFuture("F"));
 //    static List<Shop> shops = Arrays.asList(
 //            new Shop("A"), new Shop("B"), new Shop("C"), new Shop("D"), new Shop("E"), new Shop("F"),
 //            new Shop("G"), new Shop("H"), new Shop("I"), new Shop("J"), new Shop("A"), new Shop("B"),
@@ -106,7 +106,7 @@ public class Shop {
 
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Shop shop = new Shop();
+        ShopCompletableFuture shop = new ShopCompletableFuture();
         Future<Double> futurePrice = shop.getPriceAsync_01("ABC");
         //主线程做其他事情
         shop.doSomething();
