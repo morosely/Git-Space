@@ -1,6 +1,8 @@
-package com.shiji.thread.future;
+package com.shiji.thread.completablefuture.v2;
 
-// 折扣服务
+import static com.shiji.thread.completablefuture.Util.delay;
+import static com.shiji.thread.completablefuture.Util.format;
+
 public class Discount {
 
     public enum Code {
@@ -13,22 +15,11 @@ public class Discount {
         }
     }
 
-    // 根据折扣计算新价格
     public static String applyDiscount(Quote quote) {
         return quote.getShopName() + " price is " + Discount.apply(quote.getPrice(), quote.getDiscountCode());
     }
-
-    // 价格打折
     private static double apply(double price, Code code) {
         delay();
-        return price * (100 - code.percentage) / 100;
-    }
-
-    private static void delay(){
-        try {
-            Thread.sleep(1000);//模拟花时间去查询
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        return format(price * (100 - code.percentage) / 100);
     }
 }

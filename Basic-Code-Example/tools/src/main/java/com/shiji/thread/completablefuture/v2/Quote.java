@@ -1,7 +1,7 @@
-package com.shiji.thread.future;
+package com.shiji.thread.completablefuture.v2;
+
 import lombok.Data;
 
-// 报价服务
 @Data
 public class Quote {
 
@@ -15,7 +15,6 @@ public class Quote {
         this.discountCode = discountCode;
     }
 
-    // 解析报价
     public static Quote parse(String s) {
         String[] split = s.split(":");
         String shopName = split[0];
@@ -24,4 +23,3 @@ public class Quote {
         return new Quote(shopName, price, discountCode);
     }
 }
-
