@@ -14,8 +14,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.shiji.thread.completablefuture.ExchangeService;
-import com.shiji.thread.completablefuture.ExchangeService.Money;
+import com.shiji.thread.completablefuture.v1.ExchangeService.Money;
 
 public class BestPriceFinder {
 

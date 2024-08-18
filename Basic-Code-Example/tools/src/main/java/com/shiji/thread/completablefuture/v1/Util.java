@@ -1,4 +1,4 @@
-package com.shiji.thread.completablefuture;
+package com.shiji.thread.completablefuture.v1;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

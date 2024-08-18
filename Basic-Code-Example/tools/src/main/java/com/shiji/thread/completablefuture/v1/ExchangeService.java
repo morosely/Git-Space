@@ -1,5 +1,5 @@
-package com.shiji.thread.completablefuture;
-import static com.shiji.thread.completablefuture.Util.delay;
+package com.shiji.thread.completablefuture.v1;
+import static com.shiji.thread.completablefuture.v1.Util.delay;
 public class ExchangeService {
 
     public enum Money {

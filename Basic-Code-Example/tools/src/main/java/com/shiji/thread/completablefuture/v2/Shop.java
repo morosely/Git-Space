@@ -1,8 +1,8 @@
 package com.shiji.thread.completablefuture.v2;
 
 import lombok.Data;
-import static com.shiji.thread.completablefuture.Util.delay;
-import static com.shiji.thread.completablefuture.Util.format;
+import static com.shiji.thread.completablefuture.v1.Util.delay;
+import static com.shiji.thread.completablefuture.v1.Util.format;
 import java.util.Random;
 
 @Data

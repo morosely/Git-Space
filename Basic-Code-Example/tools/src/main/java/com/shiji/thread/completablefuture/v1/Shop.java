@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
-import static com.shiji.thread.completablefuture.Util.delay;
+import static com.shiji.thread.completablefuture.v1.Util.delay;
 
 @Data
 public class Shop {
