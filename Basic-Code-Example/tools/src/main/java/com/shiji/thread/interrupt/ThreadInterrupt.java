@@ -18,11 +18,20 @@ public class ThreadInterrupt {
          * interrupted() 类似于 getter + setter 先获取中断值，然后清除标志
          */
         Thread t1 = new Thread(() -> {
-            log.info("park");
+            log.info("1.--- park");
             LockSupport.park();
-            log.info("A 打断标记为:{}", Thread.currentThread().isInterrupted());
+            log.info("2.--- unpark");
+            Thread.currentThread().isInterrupted();
+            Thread.interrupted();
+//            log.info("3.--- isInterrupted() 打断标记为:{}", Thread.currentThread().isInterrupted());
+//            log.info("4.--- interrupted() 打断标记为:{}", Thread.interrupted());
+            log.info("5.--- isInterrupted() 打断标记为:{}", Thread.currentThread().isInterrupted());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             // 使用 Thread.currentThread().isInterrupted() 查看打断标记为 true, LockSupport.park() 失效
-            log.info("1. -----> unpark");
             /**
              * 执行结果：
              * 11:54:17 [t1] c.Code_14_Test - park
@@ -30,9 +39,6 @@ public class ThreadInterrupt {
              * 11:54:18 [t1] c.Code_14_Test - 打断标记为:true
              * 11:54:18 [t1] c.Code_14_Test - unpark
              */
-            System.out.println("Thread.currentThread().getName() = " + Thread.currentThread().getName());
-            log.info("B 打断标记为:{}", Thread.interrupted());
-            log.info("C 打断标记为:{}", Thread.currentThread().isInterrupted());
             // 使用 Thread.interrupted() 查看打断标记为 true, 然后清空打断标记为 false, LockSupport.park() 不失效
             /**
              * 执行结果：
@@ -41,8 +47,7 @@ public class ThreadInterrupt {
              * 11:58:13 [t1] c.Code_14_Test - 打断标记为:true
              */
             LockSupport.park();
-            log.info("2. -----> unpark");
-
+            log.info("6.--- unpark");
         }, "t1");
 
         t1.start();
@@ -66,11 +71,40 @@ public class ThreadInterrupt {
             e.printStackTrace();
         }
         LockSupport.park();  //消耗掉permit
-        LockSupport.park();  //因为此时permit为0且中断状态为false，所以阻塞*/
+        log.info("a. -----> after park");
+        LockSupport.park();  //因为此时permit为0且中断状态为false，所以阻塞
+        log.info("b. -----> after park");*/
     }
 
-}
+    private static void test1() throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                log.debug("park...");
+                LockSupport.park();
+                log.debug("打断状态：{}", Thread.interrupted());
+                log.debug("打断状态：{}", Thread.currentThread().isInterrupted());
+            }
+        });
+        t1.start();
 
+        Thread.sleep(1000);
+        t1.interrupt();
+    }
+
+    private static void test2() throws InterruptedException{
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                log.debug("park...");
+                LockSupport.park();
+                log.debug("打断状态：{}", Thread.currentThread().isInterrupted());
+                log.debug("打断状态：{}", Thread.interrupted());
+            }
+        });
+        t1.start();
+        Thread.sleep(1000);
+        t1.interrupt();
+    }
+}
 /*
     park() {
         if(permit > 0) {
