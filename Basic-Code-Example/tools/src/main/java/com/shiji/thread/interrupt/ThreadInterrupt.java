@@ -21,8 +21,10 @@ public class ThreadInterrupt {
             log.info("1.--- park");
             LockSupport.park();
             log.info("2.--- unpark");
-            Thread.currentThread().isInterrupted();
-            Thread.interrupted();
+//            Thread.currentThread().isInterrupted();
+//            Thread.interrupted();
+              System.out.println("打断状态：isInterrupted() "+ Thread.currentThread().isInterrupted());
+              System.out.println("打断状态：interrupted() "+ Thread.interrupted());
 //            log.info("3.--- isInterrupted() 打断标记为:{}", Thread.currentThread().isInterrupted());
 //            log.info("4.--- interrupted() 打断标记为:{}", Thread.interrupted());
             log.info("5.--- isInterrupted() 打断标记为:{}", Thread.currentThread().isInterrupted());
@@ -50,9 +52,9 @@ public class ThreadInterrupt {
             log.info("6.--- unpark");
         }, "t1");
 
-        t1.start();
-        Thread.sleep(1000); // 主线程休眠 1 秒
-        t1.interrupt();//interrupt()会设置中断状态为true。注意，interrupt()还会去调用unpark的，所以也会把permit置为1的。
+//        t1.start();
+//        Thread.sleep(1000); // 主线程休眠 1 秒
+//        t1.interrupt();//interrupt()会设置中断状态为true。注意，interrupt()还会去调用unpark的，所以也会把permit置为1的。
         //LockSupport.unpark(t1);
 
 
@@ -74,6 +76,7 @@ public class ThreadInterrupt {
         log.info("a. -----> after park");
         LockSupport.park();  //因为此时permit为0且中断状态为false，所以阻塞
         log.info("b. -----> after park");*/
+        test2();
     }
 
     private static void test1() throws InterruptedException {
@@ -86,7 +89,6 @@ public class ThreadInterrupt {
             }
         });
         t1.start();
-
         Thread.sleep(1000);
         t1.interrupt();
     }
@@ -96,8 +98,10 @@ public class ThreadInterrupt {
             for (int i = 0; i < 5; i++) {
                 log.debug("park...");
                 LockSupport.park();
-                log.debug("打断状态：{}", Thread.currentThread().isInterrupted());
-                log.debug("打断状态：{}", Thread.interrupted());
+                System.out.println("打断状态：isInterrupted() "+ Thread.currentThread().isInterrupted());
+                System.out.println("打断状态：interrupted() "+ Thread.interrupted());
+//                log.debug("打断状态：{}", Thread.currentThread().isInterrupted());
+//                log.debug("打断状态：{}", Thread.interrupted());
             }
         });
         t1.start();
