@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.IntUnaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -17,16 +18,22 @@ public class UniqueIdGenerator {
     private volatile List<String> synchronizedList = Collections.synchronizedList(new ArrayList<>());
     private volatile ConcurrentHashMap<Long,List> synchronizedMap = new ConcurrentHashMap();
     private ThreadLocal<List<String>> threadLocalList = ThreadLocal.withInitial(() -> new ArrayList<String>());
+
+//    private volatile ConcurrentHashMap<Long,Set> synchronizedMap = new ConcurrentHashMap();
+//    private ThreadLocal<Set<String>> threadLocalSet = ThreadLocal.withInitial(() -> new HashSet<String>());
     private volatile AtomicInteger mark = new AtomicInteger(0);
-    private static final Integer THREAD_COUNT = 1;
-    private static final Integer LOOP_COUNT = 30;
+    private volatile IntUnaryOperator intUnaryOperator = new IntUnaryOperatorImple();
+    private static final Integer THREAD_COUNT = 10;
+    private static final Integer LOOP_COUNT = 300;
 
     public String generateUniqueId() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String datePart = sdf.format(new Date());
-        String uniqueId = datePart + getLastChars(String.valueOf(mark.incrementAndGet()),1);
+//        String uniqueId = datePart + getLastChars(String.valueOf(mark.incrementAndGet()),5);
+        int id = mark.getAndUpdate(intUnaryOperator);
+        String uniqueId = datePart + "-" +getLastChars(String.valueOf(id),3) + " | " + id;
 //      String uniqueId = datePart + "-" + getLastChars(String.valueOf(mark.incrementAndGet()),7);
-//      System.out.println("uniqueId = " + uniqueId);
+        System.out.println("uniqueId = " + uniqueId);
         return uniqueId;
     }
     public String getLastChars(String str,Integer lastCharLength) {
@@ -52,10 +59,17 @@ public class UniqueIdGenerator {
                     String uniqueId = uniqueIdGenerator.generateUniqueId();
                     uniqueIdGenerator.synchronizedList.add(uniqueId);
                     uniqueIdGenerator.threadLocalList.get().add(uniqueId);
+                    //优化：保证本线程不会有重复Key
+//                    while(!uniqueIdGenerator.threadLocalSet.get().add(uniqueId)){
+//                        uniqueId = uniqueIdGenerator.generateUniqueId();
+//                    }
+//                    uniqueIdGenerator.synchronizedList.add(uniqueId);
                 }
-                System.out.println("当前线程ID和产生的Key：【" + Thread.currentThread().getId()+ "】:"  +uniqueIdGenerator.threadLocalList.get());
+                //System.out.println("当前线程ID和产生的Key：【" + Thread.currentThread().getId()+ "】:"  +uniqueIdGenerator.threadLocalList.get());
                 uniqueIdGenerator.synchronizedMap.put(Thread.currentThread().getId(),uniqueIdGenerator.threadLocalList.get());
                 uniqueIdGenerator.threadLocalList.remove();
+//                uniqueIdGenerator.synchronizedMap.put(Thread.currentThread().getId(),uniqueIdGenerator.threadLocalSet.get());
+//                uniqueIdGenerator.threadLocalSet.remove();
                 latch.countDown();
             }).start();
         }
@@ -92,3 +106,12 @@ public class UniqueIdGenerator {
 
 }
 
+//AtomicInteger 处理边界问题
+class IntUnaryOperatorImple implements IntUnaryOperator {
+    @Override
+    public int applyAsInt(int operand) {
+        if (operand >= Integer.MAX_VALUE)
+            return 1;
+        return operand + 1;
+    }
+}
