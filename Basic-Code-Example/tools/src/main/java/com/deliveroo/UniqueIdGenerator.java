@@ -17,16 +17,16 @@ public class UniqueIdGenerator {
     private volatile List<String> synchronizedList = Collections.synchronizedList(new ArrayList<>());
     private volatile ConcurrentHashMap<Long,List> synchronizedMap = new ConcurrentHashMap();
     private ThreadLocal<List<String>> threadLocalList = ThreadLocal.withInitial(() -> new ArrayList<String>());
-    private static volatile AtomicInteger mark = new AtomicInteger(0);
-    private static final Integer THREAD_COUNT = 1000;
-    private static final Integer LOOP_COUNT = 10000;
+    private volatile AtomicInteger mark = new AtomicInteger(0);
+    private static final Integer THREAD_COUNT = 1;
+    private static final Integer LOOP_COUNT = 30;
 
     public String generateUniqueId() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
         String datePart = sdf.format(new Date());
-        String uniqueId = datePart + getLastChars(String.valueOf(mark.incrementAndGet()),7);
+        String uniqueId = datePart + getLastChars(String.valueOf(mark.incrementAndGet()),1);
 //      String uniqueId = datePart + "-" + getLastChars(String.valueOf(mark.incrementAndGet()),7);
-//        System.out.println("uniqueId = " + uniqueId);
+//      System.out.println("uniqueId = " + uniqueId);
         return uniqueId;
     }
     public String getLastChars(String str,Integer lastCharLength) {
@@ -53,26 +53,26 @@ public class UniqueIdGenerator {
                     uniqueIdGenerator.synchronizedList.add(uniqueId);
                     uniqueIdGenerator.threadLocalList.get().add(uniqueId);
                 }
-                System.out.println(Thread.currentThread().getName() + " : " + Thread.currentThread().getId()+" finish");
+                System.out.println("当前线程ID和产生的Key：【" + Thread.currentThread().getId()+ "】:"  +uniqueIdGenerator.threadLocalList.get());
                 uniqueIdGenerator.synchronizedMap.put(Thread.currentThread().getId(),uniqueIdGenerator.threadLocalList.get());
                 uniqueIdGenerator.threadLocalList.remove();
                 latch.countDown();
             }).start();
-
         }
         latch.await();
 
-        System.out.println(uniqueIdGenerator.synchronizedList.size());
-        System.out.println((new HashSet(uniqueIdGenerator.synchronizedList)).size());
+        //打印总量和去重后的数量
+        System.out.println("总量："+uniqueIdGenerator.synchronizedList.size());
+        System.out.println("去重：" + (new HashSet(uniqueIdGenerator.synchronizedList)).size());
+
         Map<String, Long> countMap = uniqueIdGenerator.synchronizedList.stream()
                 .collect(Collectors.groupingBy(e -> e, Collectors.counting()))
                 .entrySet().stream()
                 .filter(e -> e.getValue() >= 2)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        System.out.println(countMap.size());
-        countMap.forEach((k, v) -> System.out.println(k + " ---> " + v));
+        countMap.forEach((k, v) -> System.out.println("重复的Key和数量 "+ k + " ---> " + v));
 
-        System.out.println("【countMap】 ==========> "+countMap.size());
+        System.out.println("存在重复Key总量【countMap】 ==========> "+countMap.size());
         Map<String,Object> resultMap = new HashMap();
         AtomicInteger index = new AtomicInteger();
         countMap.forEach((k, v) -> {
@@ -86,9 +86,8 @@ public class UniqueIdGenerator {
                     }
                 }
             });
-            System.out.println(k + " =====================> " + resultMap.get(k));
+            System.out.println(k + "重复Key和线程ID ===> " + resultMap.get(k));
         });
-        System.out.println(resultMap);
     }
 
 }

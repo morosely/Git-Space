@@ -5,18 +5,13 @@ import java.util.concurrent.TimeUnit;
 
 class House {
     int saleCount = 0;
-
     public synchronized void saleHouse() {
         saleCount++;
     }
-
     ThreadLocal<Integer> saleVolume = ThreadLocal.withInitial(() -> 0);
-
     public void saleVolumeByThreadLocal() {
         saleVolume.set(1 + saleVolume.get());
     }
-
-
 }
 
 public class ThreadLocalDemo {
